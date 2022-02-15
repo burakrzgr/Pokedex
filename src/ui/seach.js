@@ -1,3 +1,4 @@
+import React from 'react';
 import { FormControl, InputGroup, Button, Container } from 'react-bootstrap';
 import SearchIcon from '../resource/pikachu_pink_removed.png';
 

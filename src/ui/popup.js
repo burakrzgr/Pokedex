@@ -1,27 +1,15 @@
 import { Modal, Container, Row, Col } from "react-bootstrap";
-import React,{ useEffect} from "react";
+import React, { useEffect } from "react";
 import '../button.css';
 import Evolution from './evolution';
 import PokeType from './poketype';
-import {fetchPokemon} from '../axios/pokeserver'
+import { fetchPokemon, patchPokemon } from '../axios/pokeserver'
+import Rating from './Rating'
 
 function Popup({ data, show, handleClose, setModalShow }) {
-  const [pokeDef, setPokeDef] = React.useState(0);
-  const poke = (data && data.No ? fetchPokemon(data.No) : undefined); 
-  useEffect(() => {
-    if(poke)
-    { 
-      poke.then(function (rs) 
-      {
-        if(rs){
-          setPokeDef(rs.data && rs.data.Rating ? rs.data.Rating.Score / rs.data.Rating.Total:'Parse Error!')
-        }
-        else{
-          console.log('Connection Error!!');
-        }
-      }).catch(error => {console.log(error)});
-    }});
+  const poke = (data && data.No ? fetchPokemon(data.No) : undefined);
 
+  {console.log("eh")}
   return (
     <Modal
       show={show}
@@ -31,7 +19,6 @@ function Popup({ data, show, handleClose, setModalShow }) {
       backdrop="static"
       centered
     >
-
       {data ?
         <Container style={{ backgroundColor: data.BColor }} fluid>
           <Row>
@@ -52,9 +39,7 @@ function Popup({ data, show, handleClose, setModalShow }) {
                 <p>
                   {data.Desc}
                 </p>
-                <p>
-                  Rating : {pokeDef ? parseFloat(pokeDef * 10).toFixed(1):'Connection Error!'}
-                </p>
+                <Rating pokemon={poke} pokeNo={data.No} ></Rating>
               </Modal.Body>
               <Modal.Footer className="justify-content-between">
                 <Evolution list={data.Prev} setModalShow={setModalShow} />

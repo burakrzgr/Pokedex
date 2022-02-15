@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "react-bootstrap";
 import { pokeindex } from "../data/pokemons";
 import { misc } from "../data/misc";
