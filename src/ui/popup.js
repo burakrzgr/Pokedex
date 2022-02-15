@@ -17,9 +17,9 @@ function Popup({ data, show, handleClose, setModalShow }) {
           setPokeDef(rs.data && rs.data.Rating ? rs.data.Rating.Score / rs.data.Rating.Total:'Parse Error!')
         }
         else{
-          console.log('Connection Error!');
+          console.log('Connection Error!!');
         }
-      }).catch(console.log('Connection Error!'));
+      }).catch(error => {console.log(error)});
     }});
 
   return (
