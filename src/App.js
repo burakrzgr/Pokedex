@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React,{useReducer} from "react";
 import reducer from './reducers';
 import './App.css';
