@@ -1,0 +1,86 @@
+.type {
+    position: relative;
+    display: inline-block;
+    height: 36px;
+    padding: 0 16px;
+    margin: 10px 4px;
+    border: 0;
+    border-radius: 14px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 620;
+    line-height: 36px;
+    vertical-align: middle;
+    overflow: hidden;
+    cursor: pointer;
+    outline: 0;
+    z-index: 1;
+    -webkit-transition: all .15s ease-in;
+    transition: all .15s ease-in;
+  }
+  .Water{
+    background-color: #3f51b5;
+    color: #fff;
+  }
+  .Fire{
+    background-color: #ff3f0f;
+    color: #fff;
+  }
+  .Electric{
+    background-color: #ffdf10;
+    color: rgb(0, 0, 0);
+  }
+  .Grass{
+    background-color: #08a702;
+    color: #fff;
+  }
+  .Poison{
+    background-color: #5e0083;
+    color: #fff;
+  }
+  .Psychic{
+    background-color: #fc4ec2;
+    color: #fff;
+  }
+  .Ghost{
+    background-color: #4e10fa;
+    color: #fff;
+  }
+  .Dragon{ background: rgb(226,74,19);
+    background: linear-gradient(0deg, rgba(226,74,19,1) 20%, rgba(0,91,255,1) 80%); 
+    color: #fff;
+  }
+  .Normal{
+    background-color: #d6d6d6;
+    color: rgb(0, 0, 0);
+  }
+  .Fairy{
+    background-color: #c78fb9;
+    color: #fff;
+  }
+   .Ice{
+    background-color: #bde6f1;
+    color: #fff;
+  }
+   .Flying{
+    background : linear-gradient(0deg, rgb(187, 187, 187) 20%, rgb(98, 165, 253)  80%); 
+    color: #fff;
+  }
+   .Ground{
+    background : linear-gradient(0deg, rgb(90, 74, 43)  40%, rgb(214, 200, 77) 60%);
+    color: #fff;
+ }
+  .Rock{
+    background-color: #888162;
+    color: #fff;
+ }
+  .Fighting{
+    background-color: #b32d00;
+    color: #fff;
+ }
+  .Dark{
+    background-color: #080808;
+    color: #fff;
+ }
