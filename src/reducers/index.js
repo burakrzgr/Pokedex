@@ -4,11 +4,7 @@ import { pokeindex } from "../data/pokemons";
       case "SEARCH":
         var keyword = action.keyword;
         var filtered ={ arr :[] };
-        for (var pok in pokeindex) { 
-          if (pokeindex[pok].Name.toLowerCase().includes(keyword.toLowerCase())) {
-            filtered.arr.push(pokeindex[pok]);
-          }
-        }
+        filtered.arr = pokeindex.filter(x => x.Name.toLowerCase().includes(keyword.toLowerCase()));
         return { ...filtered };
       default:
         return state;

@@ -6,15 +6,21 @@ import PokeType from './poketype';
 import {fetchPokemon} from '../axios/pokeserver'
 
 function Popup({ data, show, handleClose, setModalShow }) {
-  const [pokeDef, setPokeDef] = React.useState('No');
+  const [pokeDef, setPokeDef] = React.useState(0);
   const poke = (data && data.No ? fetchPokemon(data.No) : undefined); 
   useEffect(() => {
-    if( poke)
+    if(poke)
     { 
       poke.then(function (rs) 
       {
-        setPokeDef(rs? rs.data.Rating.Score / rs.data.Rating.Total:'Connection Error!')
-      })}});
+        if(rs){
+          setPokeDef(rs.data && rs.data.Rating ? rs.data.Rating.Score / rs.data.Rating.Total:'Parse Error!')
+        }
+        else{
+          console.log('Connection Error!');
+        }
+      }).catch(console.log('Connection Error!'));
+    }});
 
   return (
     <Modal
@@ -47,7 +53,7 @@ function Popup({ data, show, handleClose, setModalShow }) {
                   {data.Desc}
                 </p>
                 <p>
-                  {parseFloat(pokeDef * 10).toFixed(1)}
+                  Rating : {pokeDef ? parseFloat(pokeDef * 10).toFixed(1):'Connection Error!'}
                 </p>
               </Modal.Body>
               <Modal.Footer className="justify-content-between">
