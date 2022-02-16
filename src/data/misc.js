@@ -8,6 +8,6 @@ export const misc = [
     BColor :'#9e939e',
     FColor :'#fff',
     Prev: [],
-    Next :['Unown'],
+    Next :['Mew','Unown'],
     Ability:[]
 }]
