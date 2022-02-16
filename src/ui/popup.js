@@ -9,7 +9,19 @@ import Rating from './Rating'
 function Popup({ data, show, handleClose, setModalShow }) {
   const poke = (data && data.No ? fetchPokemon(data.No) : undefined);
 
-  {console.log("eh")}
+  var rating = {};
+
+  if (poke) {
+    poke.then(function (rs) {
+      if (rs) {
+        ////// reducer ile burda update yapılmalı ; yoksa update edemiyor
+        rating = rs.data && rs.data.Rating ? { score: rs.data.Rating.Score, total: rs.data.Rating.Total } : { score: -1, total: 0 };
+      }
+      else {
+        console.log('Connection Error!!');
+      }
+    }).catch(error => { console.log(error) });
+  }
   return (
     <Modal
       show={show}
@@ -39,7 +51,8 @@ function Popup({ data, show, handleClose, setModalShow }) {
                 <p>
                   {data.Desc}
                 </p>
-                <Rating pokemon={poke} pokeNo={data.No} ></Rating>
+                {console.log(rating)}
+                <Rating rating={rating} pokeNo={data.No} ></Rating>
               </Modal.Body>
               <Modal.Footer className="justify-content-between">
                 <Evolution list={data.Prev} setModalShow={setModalShow} />

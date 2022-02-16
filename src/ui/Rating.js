@@ -1,52 +1,47 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { Row, Col, Button,ButtonGroup } from "react-bootstrap";
+import { Row, Col, Button, ButtonGroup } from "react-bootstrap";
 import { fetchPokemon, patchPokemon } from '../axios/pokeserver'
 
-function Rating({ pokemon,pokeNo }) {
-     const [pokeDef, setPokeDef] = React.useState({score:-1,total:0});
-console.log(pokeDef);
-       const rate = (ts,v) => {
-          console.log("v");
-          console.log(pokeNo);
-          console.log(v);
-        //  var aa = {ts};
-          console.log(ts);
-          if (v > 0) {
-            patchPokemon({ "id": pokeNo, "Rating": { "Total": ts.total + 1, "Score": ts.score + 1 } });
-          }
-          else {
-            patchPokemon({ "id": pokeNo, "Rating": { "Total": ts.total + 1, "Score": ts.score } });
-          } 
-         
-        };
+function Rating({ rating, pokeNo }) {
+    
+  const [_rating, setRating] = React.useState(rating); // reducere cevrilmeli 
+  console.log("lol");
+  console.log(rating);
+  console.log(_rating);
+     const rate = (v) => {
+          var ts = (pokeNo ? fetchPokemon(pokeNo) : undefined);
+          ts.then(function (rs) {
+               var t = {};
+               if (v > 0) {
+                    t = { "id": pokeNo, "Rating": { "Total": rs.data.Rating.Total + 1, "Score": rs.data.Rating.Score + 1 } }
+               }
+               else {
+                    t = { "id": pokeNo, "Rating": { "Total": rs.data.Rating.Total + 1, "Score": rs.data.Rating.Score } };
+               }
+               patchPokemon(t);
+               _rating = { score: t.Rating.Score, total: t.Rating.Total };
+               setRating(_rating);
+          });
 
-       if (pokeDef.score ===-1 && pokemon) {
-          pokemon.then(function (rs) {
-           if (rs) {
-                let pd =rs.data && rs.data.Rating ? {score: rs.data.Rating.Score ,total: rs.data.Rating.Total}:{score:-2,total:0};
-             setPokeDef( pd )
-           }
-           else {
-             console.log('Connection Error!!');
-           }
-         }).catch(error => { console.log(error) });
-       }
+     };
 
+     
+ //console.log(pokeNo);
      return (
           <div>
                <Row>
                     <Col xs={2} className={"pt-2"}>
-                         Rating : {pokeDef != undefined ? pokeDef.score < 0 ? ' ^-^ ' : parseFloat((pokeDef.score / pokeDef.total) * 10).toFixed(4) : 'Connection Error!'}
+                         Rating : {rating != undefined ? rating.score < 0 ? ' ^-^ ' : parseFloat((rating.score / rating.total) * 10).toFixed(2) : 'Connection Error!'}
                     </Col>
                     <Col xs={2}>
                          <ButtonGroup variant="contained" >
-                              <Button variant="contained" className={"btn-success"} onClick={(ts,v)  => rate({total:pokeDef.total,score:pokeDef.score},+1)}>
-                                   <FontAwesomeIcon icon={faAngleUp}  />
+                              <Button variant="contained" className={"btn-success"} onClick={(v) => rate(+1)}>
+                                   <FontAwesomeIcon icon={faAngleUp} />
                               </Button>
-                              <Button  variant="outlined"  className={"btn-danger"} onClick={(ts,v)  => rate({total:pokeDef.total,score:pokeDef.score},-1)} >
-                                   <FontAwesomeIcon icon={faAngleDown}  />
+                              <Button variant="outlined" className={"btn-danger"} onClick={(v) => rate(-1)} >
+                                   <FontAwesomeIcon icon={faAngleDown} />
                               </Button>
                          </ButtonGroup>
                     </Col>
