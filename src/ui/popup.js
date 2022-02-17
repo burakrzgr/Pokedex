@@ -2,8 +2,8 @@ import { Modal, Container, Row, Col } from "react-bootstrap";
 import React, { useReducer } from "react";
 import reducer from "../reducers";
 import "../button.css";
-import Evolution from "./evolution";
-import PokeType from "./poketype";
+import Evolution from "./Evolution";
+import PokeType from "./PokeType";
 import { fetchPokemon, patchPokemon } from '../axios/pokeserver'
 import Rating from "./Rating";
 
@@ -29,7 +29,6 @@ function Popup({ data, show, handleClose, setModalShow }) {
         setPokeRating({ type: "POKERATE", inf: rating });
     }) ;
   };
-
 
   return (
     <Modal

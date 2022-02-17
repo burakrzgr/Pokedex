@@ -59,7 +59,20 @@ export const pokeindex = [
         Prev: ['Horsea'],
         Next :['Kingdra'],
         Ability:['Poison Point','Sniper']
-    },
+    },  
+    {
+        No: 26,
+        Name: 'Raichu',
+        Img: 'raichu.png',
+        Type : [ 'Electric'],
+        Desc: 'Raichu, Pikachu\'nun evrimleşmiş hali bir Pokémondur. Yüksek bir elektrik gücü vardır. Ash Pikachu\'yu Raichu\'ya çevirmemiştir. Pikachu Yıldırım Taşı kullanılarak Raichu olabilir. Raichu\'nun su Pokémonlarına karşı büyük bir etkisi vardır. Hiper ışın, yıldırım gibi saldırıları kullanabilir. Çok çılgın bir pokemondur. Diğer adı Pika killer\'dır.Güçlü yıldırım saldırısı bir Dragonite bile felç edebilir.Elektrik taşıyla erken evrim geçirirse Pikachu\'nun yaptığı hızlı saldırıları yapamaz.',
+        BColor: '#f7dc6f',
+        FColor: '#000000',
+        Prev: ['Pikachu'],
+        Next: [
+        ],
+        Ability: ['Static']
+      },
     {
         No : 37,
         Name: 'Vulpix',
@@ -144,7 +157,19 @@ export const pokeindex = [
         Prev: [],
         Next :[],
         Ability:['Synchronize']
-    },
+    },  
+    {
+        No: 172,
+        Name: 'Pichu',
+        Img: 'pichu.png',
+        Type : [ 'Electric'],
+        Desc: 'Pichu, Pikachu\'nun evrimleşmeden önceki hali olan 172 numaralı bebek evredeki Pokémon. Pokémon video oyunlarından Pokémon Gold ve Silver\'de ilk defa sahneye çıkmıştır. Pokémon anime versiyonunda ise ilk serinin 179. bölümü "Pikachu to Pichu" ve Pokemon Advance Generation serisinin de 179. bölümü\'de çıkmıştır.',
+        BColor: '#f7dc6f',
+        FColor: '#000000',
+        Prev: [],
+        Next: ['Pikachu'],
+        Ability: ['Static']
+      },
     {
         No : 133,
         Name: 'Eevee',

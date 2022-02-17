@@ -2,7 +2,7 @@ import React,{useReducer} from "react";
 import reducer from './reducers';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PokeSearch from './ui/seach.js';
+import Search from './ui/Seach.js';
 import Main from './ui/Main.js';
 import { pokeindex } from "./data/pokemons";
 
@@ -13,11 +13,15 @@ function App() {
       setList({ type: "SEARCH", keyword:  e.target.value });
   };
 
+  const addPokeEvent = (data) => {
+    console.log("addPokeEvent","Done");
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <PokeSearch keypres={handleKeyPres}></PokeSearch>
-        <Main list={list.arr}></Main>
+        <Search keypres={handleKeyPres} addPokeEvent={addPokeEvent}></Search>
+        <Main list={list.arr} addPokeEvent={addPokeEvent} ></Main>
       </header>
     </div>
   );
