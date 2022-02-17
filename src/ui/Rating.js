@@ -6,6 +6,7 @@ function Rating({ rating, pokeRate, id, showRate }) {
 
      useEffect(() => {
           showRate(id);
+     // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [id]);
 
      return (
