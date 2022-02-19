@@ -2,8 +2,12 @@ import React, { useEffect } from 'react';
 import { SketchPicker } from 'react-color';
 import { OverlayTrigger, Button, Popover, Container, Row, Col,ButtonGroup } from "react-bootstrap";
 
-function ColorPicker({exColor, colorPickedEvent}) {
-    useEffect(()=> { setColor(exColor)},[exColor]);
+function ColorPicker({color: exColor , colorPickedEvent}) {
+    useEffect(()=> { 
+        
+        
+        console.log("eff",exColor);
+        setColor(exColor);},[exColor]);
     const [color, setColor] = React.useState(exColor);
     const handleChangeComplete = (color) => {
         setColor(color.hex);
@@ -39,7 +43,7 @@ function ColorPicker({exColor, colorPickedEvent}) {
     };
     return (
         <OverlayTrigger trigger="click" placement="right" overlay={Pop}>
-            <Button variant="success" style={{backgroundColor: color}} >Renk {color}</Button>
+            <Button variant="secondary text-white" style={{backgroundColor: color,  textShadow: "0px 0px 3px #000", width:"9rem"}} >Renk {color}</Button>
         </OverlayTrigger>);
 };
 

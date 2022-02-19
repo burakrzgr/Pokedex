@@ -55,7 +55,7 @@ function AddPoke({ show, handleClose }) {
                                 <Form.Control as="textarea" rows={2} />
                             </Form.Group>
                             <Form.Label>Background Color</Form.Label>
-                            <ColorPicker color={"#FFF"} colorPickedEvent={backgroundPickedEvent} />
+                            <ColorPicker color={"#FFFF"} colorPickedEvent={backgroundPickedEvent} />
                         </Modal.Body>
                         <Modal.Footer className="justify-content-between">
                             <Button variant="outline-secondary">İptal</Button>
