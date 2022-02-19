@@ -9,11 +9,13 @@ import { pokeindex } from "./data/pokemons";
 
 function App() {
   const [list, setList] = useReducer(reducer,{arr: pokeindex});
+  const [showNewPoke, setShowNewPoke] = React.useState(false);
   const handleKeyPres = (e) => {
       setList({ type: "SEARCH", keyword:  e.target.value });
   };
 
-  const addPokeEvent = (data) => {
+  const addPokeEvent = (vis) => {
+    setShowNewPoke(vis);
     console.log("addPokeEvent","Done");
   }
 
@@ -21,7 +23,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Search keypres={handleKeyPres} addPokeEvent={addPokeEvent}></Search>
-        <Main list={list.arr} addPokeEvent={addPokeEvent} ></Main>
+        <Main list={list.arr} addPokeEvent={addPokeEvent} showNewPoke={showNewPoke} ></Main>
       </header>
     </div>
   );

@@ -4,7 +4,7 @@ import { Image } from "react-bootstrap";
 
 function NewCard({ addPokeEvent }) {
      return (
-        <Card style={{ width: '17rem', backgroundColor: '#ccc', color: '#000' }} className="m-3" onClick={() => addPokeEvent()}>
+        <Card style={{ width: '17rem', backgroundColor: '#ccc', color: '#000' }} className="m-3" onClick={() => addPokeEvent(true)}>
             <Card.Img variant="top" as={Image} src={'img/NewPokemon.png'}  fluid={true} style={{ height: '12rem', width: '100%', objectFit: 'contain' }} />
             <Card.Body>
               { /* <Card.Title></Card.Title>

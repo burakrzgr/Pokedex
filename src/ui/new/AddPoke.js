@@ -1,18 +1,25 @@
 import { Modal, Container, Row, Col, Form, Button } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../button.css";
 import ColorPicker from "../misc/ColorPicker";
+import $ from 'jquery';
+
 
 function AddPoke({ show, handleClose }) {
   const [bColor, setBColor] = React.useState('#FFF');
+  const [fColor, setFColor] = React.useState('#000');
 
     const backgroundPickedEvent = (cl) => {
         setBColor(cl.hex);
-        console.log("de",cl);
     }
-
-
+    const foregroundPickedEvent = (cl) => {
+        setFColor(cl.hex);
+    }
+    useEffect(() => {
+        $(".pokeAdd").attr("tabindex", null);
+    });
     return (
+        
         <Modal
             show={show}
             size="xl"
@@ -20,6 +27,7 @@ function AddPoke({ show, handleClose }) {
             onHide={handleClose}
             backdrop="static"
             centered
+            className="pokeAdd"
         >
             <Container style={{ backgroundColor: "#FFF" }} fluid>
                 <Row>
@@ -54,8 +62,18 @@ function AddPoke({ show, handleClose }) {
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control as="textarea" rows={2} />
                             </Form.Group>
-                            <Form.Label>Background Color</Form.Label>
-                            <ColorPicker color={"#FFFF"} colorPickedEvent={backgroundPickedEvent} />
+                            <Form.Group className="mb-3" controlId="newpoke.BColor">
+                                <Form.Label>Background Color</Form.Label>
+                                <div>
+                                    <ColorPicker color={"#ffffff"} colorPickedEvent={backgroundPickedEvent} />
+                                </div>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="newpoke.FColor">
+                                <Form.Label>Foreground Color</Form.Label>
+                                <div>
+                                    <ColorPicker color={"#000000"} colorPickedEvent={foregroundPickedEvent} />
+                                </div>
+                            </Form.Group>
                         </Modal.Body>
                         <Modal.Footer className="justify-content-between">
                             <Button variant="outline-secondary">İptal</Button>
@@ -65,6 +83,7 @@ function AddPoke({ show, handleClose }) {
                 </Row>
             </Container>
         </Modal>
+        
     );
 }
 

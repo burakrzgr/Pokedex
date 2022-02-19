@@ -5,7 +5,7 @@ import Popup from "./Popup";
 import AddPoke from "./new/AddPoke";
 import NewCard from "./new/NewCard";
 
-const Main = ({ list,addPokeEvent }) => {
+const Main = ({ list,addPokeEvent,showNewPoke }) => {
   const [modalData, setModalData] = React.useState({data:{},show:false});
   const setShow = (vis) => {
     setModalData({...modalData, show : vis});
@@ -31,8 +31,8 @@ const Main = ({ list,addPokeEvent }) => {
         setModalShow={setData}
         />      
       <AddPoke 
-        show={modalData.show}
-        handleClose={() => setShow(false)}
+        show={showNewPoke}
+        handleClose={() => addPokeEvent(false)}
         />
     </Container >
   );

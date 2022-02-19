@@ -14,7 +14,7 @@ const Search = ({ keypres,addPokeEvent }) => {
                             aria-describedby="basic-addon2"
                             onKeyUp={keypres}
                         />
-                        <Button id="button-addon2" variant="danger" onClick={addPokeEvent} >
+                        <Button id="button-addon2" variant="danger" onClick={() => addPokeEvent(true)} >
                             <img src={SearchIcon} alt="Logo" style={{ width: "30px", height: "30px" }} />
                         </Button>
                     </InputGroup>
