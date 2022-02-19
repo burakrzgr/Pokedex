@@ -12,7 +12,7 @@ function Popup({ data, show, handleClose, setModalShow }) {
   const [pokeRating, setPokeRating] = useReducer(reducer, {
     id: data.No,
     total: 1,
-    score: 0,
+    score: -1,
   });
   const pokeRate = (v, id) => {
     var poke = (id ? (fetchPokemon(id)) : undefined);
