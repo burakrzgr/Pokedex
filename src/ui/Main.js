@@ -1,7 +1,7 @@
 import React from "react";
 import PokeCard from "./PokeCard"
 import { Row, Container } from 'react-bootstrap';
-import Popup from "./PopUp";
+import Popup from "./Popup";
 import NewPokeCard from "./NewPokeCard";
 
 const Main = ({ list,addPokeEvent }) => {
