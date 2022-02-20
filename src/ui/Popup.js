@@ -68,7 +68,7 @@ function Popup({ data, show, handleClose, setModalShow }) {
               </Modal.Header>
               <Modal.Body style={{ color: data.FColor }}>
                 <h5>
-                  <PokeType list={data.Type}></PokeType>
+                  <PokeType list={data.Type} ></PokeType>
                 </h5>
                 <h6>Açıklama</h6>
                 <p>{data.Desc}</p>

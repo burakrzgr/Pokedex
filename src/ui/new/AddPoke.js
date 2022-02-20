@@ -1,7 +1,8 @@
 import { Modal, Container, Row, Col, Form, Button } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../../button.css";
 import ColorPicker from "../misc/ColorPicker";
+import TypeControl from "./TypeControl";
 import $ from 'jquery';
 
 
@@ -62,6 +63,7 @@ function AddPoke({ show, handleClose }) {
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control as="textarea" rows={2} />
                             </Form.Group>
+                            <TypeControl></TypeControl>
                             <Form.Group className="mb-3" controlId="newpoke.BColor">
                                 <Form.Label>Background Color</Form.Label>
                                 <div>
@@ -74,6 +76,7 @@ function AddPoke({ show, handleClose }) {
                                     <ColorPicker color={"#000000"} colorPickedEvent={foregroundPickedEvent} />
                                 </div>
                             </Form.Group>
+                            
                         </Modal.Body>
                         <Modal.Footer className="justify-content-between">
                             <Button variant="outline-secondary">İptal</Button>
