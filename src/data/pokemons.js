@@ -316,10 +316,4 @@ export const pokeindex = [
         Next :['Mightyena'],
         Ability:['Run Away','Quick Feet']
     }
-
-
-
-
-
-
 ]
