@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
-import { Button, Container, Row,Stack } from "react-bootstrap";
+import { Button, Stack } from "react-bootstrap";
 import AddImg from "../../resource/AddImg.png";
 
 const fileTypes = ["JPG", "PNG", "BMP"];
