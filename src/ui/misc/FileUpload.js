@@ -19,32 +19,41 @@ function FileUpload() {
   };
 
   return (
-    <>
-      {tempUrl ? (
-        <div
-          style={{ height: "25rem" }}
-          className="border border-secondary dashed rounded p-1"
-        >
-          <img
-            src={tempUrl}
-            alt=""
-            style={{
-              height: "100%",
-              width: "20rem",
-              objectFit: "contain",
-            }}
-          />
-          <div className="d-grid mt-2">
-            <Button variant="danger" size="sm" onClick={removeImg}>
-              Resmi Kaldır
-            </Button>
-          </div>
-        </div>
-      ) : (
-        <FileUploader
+      <FileUploader
           handleChange={handleChange}
           name="file"
-          children={
+          children={ChildComponent(tempUrl,removeImg)}
+          hoverTitle="Drop Here"
+          types={fileTypes}
+          multiple={false}
+        />
+  );
+}
+
+const ChildComponent = (tempUrl,removeImg) => (
+
+        <>
+            {tempUrl ? (
+                <div
+                  style={{ height: "25rem" }}
+                  className="border border-secondary dashed rounded p-1"
+                >
+                  <img
+                    src={tempUrl}
+                    alt=""
+                    style={{
+                      height: "100%",
+                      width: "20rem",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <div className="d-grid mt-2">
+                    <Button variant="danger" size="sm" onClick={removeImg}>
+                      Resmi Değiştir
+                    </Button>
+                  </div>
+                </div>
+              ) : (
             <div
               style={{ height: "28rem", width:"18rem"}}
               className="border border-secondary dashed rounded p-1"
@@ -63,14 +72,9 @@ function FileUpload() {
                 <div className="text-center ">JPG, PNG, BMP</div>
               </Stack>
             </div>
-          }
-          hoverTitle="Drop Here"
-          types={fileTypes}
-          multiple={false}
-        />
-      )}
-    </>
-  );
-}
+              )
+              }
+            </>
+    );
 
 export default FileUpload;
