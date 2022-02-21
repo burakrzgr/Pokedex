@@ -35,7 +35,7 @@ function ColorPicker({ color: exColor, colorPickedEvent }) {
     };
     return (
         <OverlayTrigger trigger="click" placement="right" overlay={Pop}>
-            <Button variant="secondary text-white text-start" style={{ backgroundColor: color, textShadow: "0px 0px 4px #000", width: "10rem" }} >Renk {color}</Button>
+            <Button variant="secondary text-white text-start" style={{ backgroundColor: color, textShadow: "0px 0px 4px #000", width: "10rem" }} >Color {color}</Button>
         </OverlayTrigger>);
 };
 

@@ -48,7 +48,7 @@ const ChildComponent = (tempUrl, removeImg) => (
         />
         <div className="d-grid mt-2">
           <Button variant="danger" size="sm" onClick={removeImg}>
-            Resmi Değiştir
+            Change / Remove Image
           </Button>
         </div>
       </div>

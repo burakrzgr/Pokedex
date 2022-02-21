@@ -1,55 +1,59 @@
-import { Modal, Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Modal, Container, Row, Col, Form, Button, Stack } from "react-bootstrap";
 import React, { useEffect } from "react";
 import "../../button.css";
 import ColorPicker from "../misc/ColorPicker";
 import TypeControl from "./TypeControl";
 import $ from 'jquery';
 import FileUpload from "../misc/FileUpload";
-import TextAdder from "../misc/TextAdder"; 
+import TextAdder from "../misc/TextAdder";
 
 function AddPoke({ show, handleClose }) {
-    
-    const [values, setValues] = React.useState({no:"",pokename:"",desc:""});
+
+    const [values, setValues] = React.useState({ no: "", pokename: "", desc: "" });
     const [img, setImg] = React.useState(null);
     const [bColor, setBColor] = React.useState('#FFF');
     const [fColor, setFColor] = React.useState('#000');
-    const [types, setTypes] = React.useState({arr:[]});
-    const [prev, setPrev] = React.useState({arr:[]});
+    const [types, setTypes] = React.useState({ arr: [] });
+    const [prev, setPrev] = React.useState({ arr: [] });
+    const [next, setNext] = React.useState({ arr: [] });
+    const [ability, setAbility] = React.useState({ arr: [] });
 
     useEffect(() => {
         $(".pokeAdd").attr("tabindex", null);
-    });
+        setPrev({ arr: [] });
+        setNext({ arr: [] });
+    }, [show]);
 
     const backgroundPickedEvent = (cl) => {
-        console.log(cl);
         setBColor(cl);
     }
     const foregroundPickedEvent = (cl) => {
         setFColor(cl);
     }
-    
     const handleChangeNo = (e) => {
-        setValues({no:e.target.value, pokename:values.pokename,desc:values.desc});
+        setValues({ no: e.target.value, pokename: values.pokename, desc: values.desc });
     }
-    const handleChangeName= (e) => {
-        setValues({no:values.no, pokename:e.target.value,desc:values.desc});
+    const handleChangeName = (e) => {
+        setValues({ no: values.no, pokename: e.target.value, desc: values.desc });
     }
-    const handleChangeDesc= (e) => {
-        setValues({no:values.no, pokename:values.pokename,desc:e.target.value});
+    const handleChangeDesc = (e) => {
+        setValues({ no: values.no, pokename: values.pokename, desc: e.target.value });
     }
 
     const savePoke = () => {
-        console.log("bcolor",bColor);   
-        console.log("fcolor",fColor);
-        console.log("type",types); 
-        console.log("img",img); 
-        console.log("type",types); 
-        console.log("img",img); 
-        console.log("v",values); 
+        console.log("bcolor", bColor);
+        console.log("fcolor", fColor);
+        console.log("type", types);
+        console.log("img", img);
+        console.log("type", types.arr);
+        console.log("img", img);
+        console.log("v", values);
+        console.log("pr-p", prev.arr);
+        console.log("nx-p", next.arr);
+        console.log("abl", ability.arr);
     }
 
     return (
-
         <Modal
             show={show}
             size="xl"
@@ -75,7 +79,7 @@ function AddPoke({ show, handleClose }) {
                                         <Col xl={4}>
                                             <Form.Group className="mb-3" controlId="newpoke.No">
                                                 <Form.Label>#No</Form.Label>
-                                                <Form.Control type="number" min="1" max="999" placeholder="#No" onChange={handleChangeNo}/>
+                                                <Form.Control type="number" min="1" max="999" placeholder="#No" onChange={handleChangeNo} />
                                             </Form.Group>
                                         </Col>
                                         <Col xl={8}>
@@ -92,28 +96,44 @@ function AddPoke({ show, handleClose }) {
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control as="textarea" rows={2} onChange={handleChangeDesc} />
                             </Form.Group>
+                            <Stack direction="horizontal">
+                                <Form.Group className="mb-3" controlId="newpoke.BColor">
+                                    <Form.Label>Background Color</Form.Label>
+                                    <div>
+                                        <ColorPicker color={bColor} colorPickedEvent={backgroundPickedEvent} />
+                                    </div>
+                                </Form.Group>
+                                <div className="ms-auto"></div>
+                                <Form.Group className="mb-3" controlId="newpoke.FColor">
+                                    <Form.Label>Foreground Color</Form.Label>
+                                    <div>
+                                        <ColorPicker color={fColor} colorPickedEvent={foregroundPickedEvent} />
+                                    </div>
+                                </Form.Group>
+                                <div className="ms-auto"></div>
+                            </Stack>
                             <Form.Group className="mb-3" controlId="newpoke.types">
                                 <Form.Label>Type(s)</Form.Label>
                                 <div>
                                     <TypeControl list={types} typeChanged={setTypes} />
                                 </div>
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="newpoke.BColor">
-                                <Form.Label>Background Color</Form.Label>
-                                <div>
-                                    <ColorPicker color={bColor} colorPickedEvent={backgroundPickedEvent} />
-                                </div>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="newpoke.FColor">
-                                <Form.Label>Foreground Color</Form.Label>
-                                <div>
-                                    <ColorPicker color={fColor} colorPickedEvent={foregroundPickedEvent} />
-                                </div>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="newpoke.prevpoke">
+                            <Form.Group className="mb-3" controlId="newpoke-prevpoke">
                                 <Form.Label>Previous Pokemon</Form.Label>
                                 <div>
                                     <TextAdder list={prev} listChanged={setPrev} />
+                                </div>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="newpoke-nextpoke">
+                                <Form.Label>Next Pokemon(s)</Form.Label>
+                                <div>
+                                    <TextAdder list={next} listChanged={setNext} />
+                                </div>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="newpoke-ability">
+                                <Form.Label>Abilities</Form.Label>
+                                <div>
+                                    <TextAdder list={ability} listChanged={setAbility} variety="primary" buttonText="Ability" />
                                 </div>
                             </Form.Group>
                         </Modal.Body>

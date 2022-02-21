@@ -1,59 +1,63 @@
 import React from 'react';
-import { Stack, Button,InputGroup,FormControl } from "react-bootstrap";
+import { Stack, Button, InputGroup, FormControl } from "react-bootstrap";
 
+function TextAdder({ list, listChanged,variety,buttonText }) {
 
-function TextAdder({ list, listChanged }) {
+    const [text, setText] = React.useState("");
 
-    const [text, setText] = React.useState({ arr: list });
-
-    const addText = () => {
-        console.log(text);
-        if (!list.arr.includes(text)) {
-            listChanged(prev => ({ arr: [...prev.arr, text] }));
+    const addText = (e) => {
+        var tx = text ? text.trim():"";
+        if (tx !== "" && !list.arr.includes(tx)) {
+            listChanged(prev => ({ arr: [...prev.arr, tx] }));
         }
+        setText("");
     };
+
     const removeText = (remove) => {
         listChanged(prev => ({ arr: prev.arr.filter(t => t !== remove) }))
     };
 
-    function TextController({ addText }) {
-        return (
-            <>
-                <InputGroup className="mb-3" style={{width:"6rem"}}>
-                    <FormControl
-                        placeholder="Pokemon"
-                        aria-label="Pokemon"
-                        aria-describedby="poke-addon"
-                        id="addpoketextcontrol"
-                        onChange={(e) => setText(e.target.value)}
-                    />
-                    <Button variant="outline-success" id="button-addon" onClick={() => addText()} >
-                        +
-                    </Button>
-                </InputGroup>
-            </>
-        );
-    }
-
-    function TextList({ listText }) {
-        return (
-            <>
-                {listText ? listText.map(i => (
-                    <span key={i}>{i}</span>
-                )) : <div />}
-            </>
-        );
-    }
-
-
     return (
         <Stack direction="horizontal" gap={0}>
             <div>
-                <TextList listText={list.arr} removeText={removeText} />
+                <TextList listText={list.arr} removeText={removeText} variety={variety} />
             </div>
-            <TextController addText={addText} />
+            <TextController setText={setText} addText={addText} textV={text} variety={variety} buttonText={buttonText} />
         </Stack>
     );
 };
+function TextList({ listText, removeText,variety}) {
+    return (listText && listText.length > 0 ?
+        <Stack direction="horizontal" className="me-3" >
+            {listText.map(i => (
+                <div key={i} className="me-1">
+                    <InputGroup size='sm' >
+                        <Button variant={variety?'outline-'+variety:"outline-success"}>{i}</Button>
+                        <Button variant='danger' onClick={() => removeText(i)}>X</Button>
+                    </InputGroup>
+                </div>
+            ))}
+        </Stack> : <div />
+    );
+}
+
+function TextController({ textV, setText, addText,variety,buttonText }) {
+    return (
+        <>
+            <InputGroup style={{ width: "7rem" }} size='sm'>
+                <FormControl
+                    placeholder={buttonText?buttonText:"Pokemon"}
+                    aria-label="Pokemon"
+                    aria-describedby="poke-addon"
+                    value={textV}
+                    onChange={(e) => { setText(e.target.value) }}
+                />
+                <Button variant={variety?variety:"success"} id="button-addon" onClick={addText} >
+                    +
+                </Button>
+            </InputGroup>
+        </>
+    );
+}
 
 export default TextAdder;
