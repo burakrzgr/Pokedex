@@ -1,6 +1,5 @@
 import React from "react";
-import { Card } from 'react-bootstrap';
-import { Image } from "react-bootstrap";
+import { Card,Image } from 'react-bootstrap';
 
 function NewCard({ addPokeEvent }) {
      return (

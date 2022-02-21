@@ -4,6 +4,7 @@ import "../../button.css";
 import ColorPicker from "../misc/ColorPicker";
 import TypeControl from "./TypeControl";
 import $ from 'jquery';
+import FileUpload from "../misc/FileUpload";
 
 
 function AddPoke({ show, handleClose }) {
@@ -33,18 +34,7 @@ function AddPoke({ show, handleClose }) {
             <Container style={{ backgroundColor: "#FFF" }} fluid>
                 <Row>
                     <Col md="auto" className="m-1">
-                   
-                            <div
-                                style={{
-                                    height: "20rem",
-                                    width: "20rem",
-                                    objectFit: "contain",
-                                    border: "1px solid black"
-                                }}
-                                alt="Pokemon"
-                            >
-                                <p style={{textAlign:"center"}}>Resimi Buraya Sürükleyin</p>
-                            </div>
+                            <FileUpload className={{height:"100%"}}></FileUpload>
                     </Col>
                     <Col>
                         <Modal.Header closeButton>
