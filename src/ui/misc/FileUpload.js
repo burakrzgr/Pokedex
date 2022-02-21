@@ -19,62 +19,60 @@ function FileUpload() {
   };
 
   return (
-      <FileUploader
-          handleChange={handleChange}
-          name="file"
-          children={ChildComponent(tempUrl,removeImg)}
-          hoverTitle="Drop Here"
-          types={fileTypes}
-          multiple={false}
-        />
+    <FileUploader
+      handleChange={handleChange}
+      name="file"
+      children={ChildComponent(tempUrl, removeImg)}
+      hoverTitle="Drop Here"
+      types={fileTypes}
+      multiple={false}
+    />
   );
 }
 
-const ChildComponent = (tempUrl,removeImg) => (
-
-        <>
-            {tempUrl ? (
-                <div
-                  style={{ height: "25rem" }}
-                  className="border border-secondary dashed rounded p-1"
-                >
-                  <img
-                    src={tempUrl}
-                    alt=""
-                    style={{
-                      height: "100%",
-                      width: "20rem",
-                      objectFit: "contain",
-                    }}
-                  />
-                  <div className="d-grid mt-2">
-                    <Button variant="danger" size="sm" onClick={removeImg}>
-                      Resmi Değiştir
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-            <div
-              style={{ height: "28rem", width:"18rem"}}
-              className="border border-secondary dashed rounded p-1"
-            >
-              <Stack >
-                  <div style={{ height: "8rem" }}></div>
-                <div className="text-center">Drag the image of<br/>the pokemon here.</div>
-                <div className="text-center pt-4 pb-4">
-                  <img
-                    src={AddImg}
-                    alt="Add Icon"
-                    style={{ width: "4rem" }}
-                  ></img>
-                </div>
-                <div className="text-center ">Accepted Formats</div>
-                <div className="text-center ">JPG, PNG, BMP</div>
-              </Stack>
-            </div>
-              )
-              }
-            </>
-    );
+const ChildComponent = (tempUrl, removeImg) => (
+  <>
+    {tempUrl ? (
+      <div
+        style={{ height: "25rem" }}
+        className="border border-secondary dashed rounded p-1"
+      >
+        <img
+          src={tempUrl}
+          alt=""
+          style={{
+            height: "100%",
+            width: "20rem",
+            objectFit: "contain",
+          }}
+        />
+        <div className="d-grid mt-2">
+          <Button variant="danger" size="sm" onClick={removeImg}>
+            Resmi Değiştir
+          </Button>
+        </div>
+      </div>
+    ) : (
+      <div
+        style={{ height: "28rem", width: "18rem" }}
+        className="border border-secondary dashed rounded p-1"
+      >
+        <Stack >
+          <div style={{ height: "8rem" }}></div>
+          <div className="text-center">Drag the image of<br />the pokemon here.</div>
+          <div className="text-center pt-4 pb-4">
+            <img
+              src={AddImg}
+              alt="Add Icon"
+              style={{ width: "4rem" }}
+            ></img>
+          </div>
+          <div className="text-center ">Accepted Formats</div>
+          <div className="text-center ">JPG, PNG, BMP</div>
+        </Stack>
+      </div>
+    )}
+  </>
+);
 
 export default FileUpload;
