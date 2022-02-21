@@ -1,31 +1,33 @@
 import React from 'react';
 import { Stack, Button,InputGroup,FormControl } from "react-bootstrap";
-import $ from 'jquery';
+
 
 function TextAdder({ list, listChanged }) {
 
-    //const [list, setList] = React.useState({ arr: typeList });
+    const [text, setText] = React.useState({ arr: list });
 
-    const addText = (text) => {
+    const addText = () => {
+        console.log(text);
         if (!list.arr.includes(text)) {
             listChanged(prev => ({ arr: [...prev.arr, text] }));
         }
     };
-    const removeText = (text) => {
-        listChanged(prev => ({ arr: prev.arr.filter(t => t !== text) }))
+    const removeText = (remove) => {
+        listChanged(prev => ({ arr: prev.arr.filter(t => t !== remove) }))
     };
 
     function TextController({ addText }) {
         return (
             <>
-                <InputGroup className="mb-3">
+                <InputGroup className="mb-3" style={{width:"6rem"}}>
                     <FormControl
                         placeholder="Pokemon"
                         aria-label="Pokemon"
                         aria-describedby="poke-addon"
                         id="addpoketextcontrol"
+                        onChange={(e) => setText(e.target.value)}
                     />
-                    <Button variant="outline-success" id="button-addon" onClick={() => addText($("#addpoketextcontrol").value)} >
+                    <Button variant="outline-success" id="button-addon" onClick={() => addText()} >
                         +
                     </Button>
                 </InputGroup>
