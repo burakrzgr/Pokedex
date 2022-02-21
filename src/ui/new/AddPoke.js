@@ -8,8 +8,8 @@ import FileUpload from "../misc/FileUpload";
 
 
 function AddPoke({ show, handleClose }) {
-  const [bColor, setBColor] = React.useState('#FFF');
-  const [fColor, setFColor] = React.useState('#000');
+    const [bColor, setBColor] = React.useState('#FFF');
+    const [fColor, setFColor] = React.useState('#000');
 
     const backgroundPickedEvent = (cl) => {
         setBColor(cl.hex);
@@ -21,7 +21,7 @@ function AddPoke({ show, handleClose }) {
         $(".pokeAdd").attr("tabindex", null);
     });
     return (
-        
+
         <Modal
             show={show}
             size="xl"
@@ -34,7 +34,7 @@ function AddPoke({ show, handleClose }) {
             <Container style={{ backgroundColor: "#FFF" }} fluid>
                 <Row>
                     <Col md="auto" className="m-1">
-                            <FileUpload className={{height:"100%"}}></FileUpload>
+                        <FileUpload className={{ height: "100%" }}></FileUpload>
                     </Col>
                     <Col>
                         <Modal.Header closeButton>
@@ -42,10 +42,21 @@ function AddPoke({ show, handleClose }) {
                                 id="contained-modal-title-vcenter"
                                 style={{ color: '#000' }}
                             >
-                            <Form.Group className="mb-3" controlId="newpoke.Name">
-                                <Form.Label>Pokemon Name</Form.Label>
-                                <Form.Control type="text" placeholder="Poke Name" />
-                            </Form.Group>
+                                <Container className="ps-0" fluid>
+                                    <Row>
+                                        <Col xl={4}>
+                                            <Form.Group className="mb-3" controlId="newpoke.No">
+                                                <Form.Label>#No</Form.Label>
+                                                <Form.Control type="number" min="1" max="999" placeholder="#No" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col xl={8}>
+                                            <Form.Group className="mb-3" controlId="newpoke.Name">
+                                                <Form.Label>Pokemon Name</Form.Label>
+                                                <Form.Control type="text" placeholder="Poke Name" />
+                                            </Form.Group>
+                                        </Col></Row>
+                                </Container>
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body style={{ color: '#000' }}>
@@ -66,7 +77,7 @@ function AddPoke({ show, handleClose }) {
                                     <ColorPicker color={"#000000"} colorPickedEvent={foregroundPickedEvent} />
                                 </div>
                             </Form.Group>
-                            
+
                         </Modal.Body>
                         <Modal.Footer className="justify-content-between">
                             <div></div>
@@ -76,7 +87,7 @@ function AddPoke({ show, handleClose }) {
                 </Row>
             </Container>
         </Modal>
-        
+
     );
 }
 
