@@ -2,18 +2,17 @@ import React from 'react';
 import { Dropdown, Stack } from "react-bootstrap";
 import ClosablePokeType from './ClosablePokeType';
 
-function TypeControl() {
+function TypeControl({list,typeChanged}) {
 
-    const [list, setList] = React.useState({ arr: [] });
+    //const [list, setList] = React.useState({ arr: typeList });
 
     const addTypeToList = (type) => {
         if (!list.arr.includes(type) && list.arr.length < 3) {
-            setList(prev => ({ arr: [...prev.arr, type] }));
+            typeChanged(prev => ({ arr: [...prev.arr, type] }));
         }
     };
     const removeTypeFromList = (type) => {
-        setList(prev => ({ arr: prev.arr.filter(t => t !== type) }))
-
+        typeChanged(prev => ({ arr: prev.arr.filter(t => t !== type) }))
     };
 
 

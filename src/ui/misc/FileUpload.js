@@ -6,8 +6,7 @@ import "../../border.css";
 
 const fileTypes = ["JPG", "PNG", "BMP"];
 //npm i --save react-drag-drop-files
-function FileUpload() {
-  const [file, setFile] = useState(null);
+function FileUpload({file,setFile}) {
   const [tempUrl, setTempUrl] = useState(null);
   const handleChange = (f) => {
     setFile(f);
@@ -17,6 +16,7 @@ function FileUpload() {
     setFile(null);
     setTempUrl(null);
   };
+
 
   return (
     <FileUploader

@@ -8,18 +8,30 @@ import FileUpload from "../misc/FileUpload";
 
 
 function AddPoke({ show, handleClose }) {
+    
+    const [img, setImg] = React.useState(null);
     const [bColor, setBColor] = React.useState('#FFF');
     const [fColor, setFColor] = React.useState('#000');
+    const [types, setTypes] = React.useState({arr:[]});
 
     const backgroundPickedEvent = (cl) => {
-        setBColor(cl.hex);
+        console.log(cl);
+        setBColor(cl);
     }
     const foregroundPickedEvent = (cl) => {
-        setFColor(cl.hex);
+        setFColor(cl);
     }
     useEffect(() => {
         $(".pokeAdd").attr("tabindex", null);
     });
+
+    const savePoke = () => {
+        console.log("bcolor",bColor);   
+        console.log("fcolor",fColor);
+        console.log("type",types); 
+        console.log("img",img); 
+    }
+
     return (
 
         <Modal
@@ -28,13 +40,13 @@ function AddPoke({ show, handleClose }) {
             aria-labelledby="contained-modal-title-vcenter"
             onHide={handleClose}
             backdrop="static"
-            centered
             className="pokeAdd"
+            centered
         >
             <Container style={{ backgroundColor: "#FFF" }} fluid>
                 <Row>
                     <Col md="auto" className="m-1">
-                        <FileUpload className={{ height: "100%" }}></FileUpload>
+                        <FileUpload className={{ height: "100%" }} file={img} setFile={setImg} ></FileUpload>
                     </Col>
                     <Col>
                         <Modal.Header closeButton>
@@ -64,24 +76,28 @@ function AddPoke({ show, handleClose }) {
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control as="textarea" rows={2} />
                             </Form.Group>
-                            <TypeControl></TypeControl>
+                            <Form.Group className="mb-3" controlId="newpoke.types">
+                                <Form.Label>Type(s)</Form.Label>
+                                <div>
+                                    <TypeControl list={types} typeChanged={setTypes} />
+                                </div>
+                            </Form.Group>
                             <Form.Group className="mb-3" controlId="newpoke.BColor">
                                 <Form.Label>Background Color</Form.Label>
                                 <div>
-                                    <ColorPicker color={"#ffffff"} colorPickedEvent={backgroundPickedEvent} />
+                                    <ColorPicker color={bColor} colorPickedEvent={backgroundPickedEvent} />
                                 </div>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="newpoke.FColor">
                                 <Form.Label>Foreground Color</Form.Label>
                                 <div>
-                                    <ColorPicker color={"#000000"} colorPickedEvent={foregroundPickedEvent} />
+                                    <ColorPicker color={fColor} colorPickedEvent={foregroundPickedEvent} />
                                 </div>
                             </Form.Group>
-
                         </Modal.Body>
                         <Modal.Footer className="justify-content-between">
                             <div></div>
-                            <Button variant="primary">Add Pokemon</Button>
+                            <Button variant="primary" onClick={() => savePoke()}>Add Pokemon</Button>
                         </Modal.Footer>
                     </Col>
                 </Row>

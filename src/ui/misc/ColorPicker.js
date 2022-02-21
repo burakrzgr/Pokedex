@@ -9,8 +9,7 @@ function ColorPicker({ color: exColor, colorPickedEvent }) {
         [exColor]);
     const [color, setColor] = React.useState(exColor);
     const handleChange = (_color) => {
-        console.log(_color.hex);
-        setColor(_color.hex);
+        colorPickedEvent(_color.hex);
     };
     const Pop = (
         <Popover id="popover-contained"  >
@@ -25,7 +24,7 @@ function ColorPicker({ color: exColor, colorPickedEvent }) {
             </Popover.Body>
         </Popover>
     );
-    function Comp({cColor,cEvent}) {
+    function Comp() {
         return (
             <SketchPicker 
                 disableAlpha={true} 
