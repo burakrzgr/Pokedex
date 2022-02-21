@@ -57,9 +57,8 @@ const ChildComponent = (tempUrl, removeImg) => (
         style={{ height: "28rem", width: "18rem" }}
         className="border border-secondary dashed rounded p-1"
       >
-        <Stack >
-          <div style={{ height: "8rem" }}></div>
-          <div className="text-center">Drag the image of<br />the pokemon here.</div>
+        <Stack className="align-items-center justify-content-center h-100">
+          <div className="text-center ">Drag the image of<br />the pokemon here.</div>
           <div className="text-center pt-4 pb-4">
             <img
               src={AddImg}
@@ -69,6 +68,7 @@ const ChildComponent = (tempUrl, removeImg) => (
           </div>
           <div className="text-center ">Accepted Formats</div>
           <div className="text-center ">JPG, PNG, BMP</div>
+          
         </Stack>
       </div>
     )}
