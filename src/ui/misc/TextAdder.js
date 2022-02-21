@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack } from "react-bootstrap";
+import { Stack, Button,InputGroup,FormControl } from "react-bootstrap";
 import $ from 'jquery';
 
 function TextAdder({ list, listChanged }) {
@@ -7,7 +7,7 @@ function TextAdder({ list, listChanged }) {
     //const [list, setList] = React.useState({ arr: typeList });
 
     const addText = (text) => {
-        if (!list.arr.includes(type)) {
+        if (!list.arr.includes(text)) {
             listChanged(prev => ({ arr: [...prev.arr, text] }));
         }
     };
@@ -32,6 +32,7 @@ function TextAdder({ list, listChanged }) {
             </>
         );
     }
+
     function TextList({ listText }) {
         return (
             <>

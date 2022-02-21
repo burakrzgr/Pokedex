@@ -5,7 +5,7 @@ import ColorPicker from "../misc/ColorPicker";
 import TypeControl from "./TypeControl";
 import $ from 'jquery';
 import FileUpload from "../misc/FileUpload";
-
+import TextAdder from "../misc/TextAdder"; 
 
 function AddPoke({ show, handleClose }) {
     
