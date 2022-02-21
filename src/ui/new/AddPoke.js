@@ -14,6 +14,7 @@ function AddPoke({ show, handleClose }) {
     const [bColor, setBColor] = React.useState('#FFF');
     const [fColor, setFColor] = React.useState('#000');
     const [types, setTypes] = React.useState({arr:[]});
+    const [prev, setPrev] = React.useState({arr:[]});
 
     useEffect(() => {
         $(".pokeAdd").attr("tabindex", null);
@@ -107,6 +108,12 @@ function AddPoke({ show, handleClose }) {
                                 <Form.Label>Foreground Color</Form.Label>
                                 <div>
                                     <ColorPicker color={fColor} colorPickedEvent={foregroundPickedEvent} />
+                                </div>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="newpoke.prevpoke">
+                                <Form.Label>Previous Pokemon</Form.Label>
+                                <div>
+                                    <TextAdder list={prev} listChanged={setPrev} />
                                 </div>
                             </Form.Group>
                         </Modal.Body>
