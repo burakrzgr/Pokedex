@@ -69,8 +69,8 @@ function AddPoke({ show, handleClose }) {
                             
                         </Modal.Body>
                         <Modal.Footer className="justify-content-between">
-                            <Button variant="outline-secondary">İptal</Button>
-                            <Button  variant="primary">Add Pokemon</Button>
+                            <div></div>
+                            <Button variant="primary">Add Pokemon</Button>
                         </Modal.Footer>
                     </Col>
                 </Row>

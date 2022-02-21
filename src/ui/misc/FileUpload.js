@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import { Button, Stack } from "react-bootstrap";
 import AddImg from "../../resource/AddImg.png";
+import "../../border.css";
 
 const fileTypes = ["JPG", "PNG", "BMP"];
 //npm i --save react-drag-drop-files
@@ -22,7 +23,7 @@ function FileUpload() {
       {tempUrl ? (
         <div
           style={{ height: "25rem" }}
-          className="border border-primary rounded dashed ps-1 pe-2 pt-1"
+          className="border border-secondary dashed rounded p-1"
         >
           <img
             src={tempUrl}
@@ -45,8 +46,8 @@ function FileUpload() {
           name="file"
           children={
             <div
-              style={{ height: "28rem", width:"18rem" }}
-              className="border border-primary rounded dashed p-1"
+              style={{ height: "28rem", width:"18rem"}}
+              className="border border-secondary dashed rounded p-1"
             >
               <Stack >
                   <div style={{ height: "8rem" }}></div>
