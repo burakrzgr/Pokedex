@@ -4,7 +4,6 @@ import { Row, Container } from 'react-bootstrap';
 import Popup from "./Popup";
 import AddPoke from "./new/AddPoke";
 import NewCard from "./new/NewCard";
-import FileUpload from "./misc/FileUpload";
 
 const Main = ({ list,addPokeEvent,showNewPoke }) => {
   const [modalData, setModalData] = React.useState({data:{},show:false});
@@ -35,7 +34,6 @@ const Main = ({ list,addPokeEvent,showNewPoke }) => {
         show={showNewPoke}
         handleClose={() => addPokeEvent(false)}
         />
-        <FileUpload ></FileUpload>
     </Container >
   );
 }
