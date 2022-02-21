@@ -9,10 +9,15 @@ import FileUpload from "../misc/FileUpload";
 
 function AddPoke({ show, handleClose }) {
     
+    const [values, setValues] = React.useState({no:"",pokename:"",desc:""});
     const [img, setImg] = React.useState(null);
     const [bColor, setBColor] = React.useState('#FFF');
     const [fColor, setFColor] = React.useState('#000');
     const [types, setTypes] = React.useState({arr:[]});
+
+    useEffect(() => {
+        $(".pokeAdd").attr("tabindex", null);
+    });
 
     const backgroundPickedEvent = (cl) => {
         console.log(cl);
@@ -21,15 +26,25 @@ function AddPoke({ show, handleClose }) {
     const foregroundPickedEvent = (cl) => {
         setFColor(cl);
     }
-    useEffect(() => {
-        $(".pokeAdd").attr("tabindex", null);
-    });
+    
+    const handleChangeNo = (e) => {
+        setValues({no:e.target.value, pokename:values.pokename,desc:values.desc});
+    }
+    const handleChangeName= (e) => {
+        setValues({no:values.no, pokename:e.target.value,desc:values.desc});
+    }
+    const handleChangeDesc= (e) => {
+        setValues({no:values.no, pokename:values.pokename,desc:e.target.value});
+    }
 
     const savePoke = () => {
         console.log("bcolor",bColor);   
         console.log("fcolor",fColor);
         console.log("type",types); 
         console.log("img",img); 
+        console.log("type",types); 
+        console.log("img",img); 
+        console.log("v",values); 
     }
 
     return (
@@ -59,13 +74,13 @@ function AddPoke({ show, handleClose }) {
                                         <Col xl={4}>
                                             <Form.Group className="mb-3" controlId="newpoke.No">
                                                 <Form.Label>#No</Form.Label>
-                                                <Form.Control type="number" min="1" max="999" placeholder="#No" />
+                                                <Form.Control type="number" min="1" max="999" placeholder="#No" onChange={handleChangeNo}/>
                                             </Form.Group>
                                         </Col>
                                         <Col xl={8}>
                                             <Form.Group className="mb-3" controlId="newpoke.Name">
                                                 <Form.Label>Pokemon Name</Form.Label>
-                                                <Form.Control type="text" placeholder="Poke Name" />
+                                                <Form.Control type="text" placeholder="Poke Name" onChange={handleChangeName} />
                                             </Form.Group>
                                         </Col></Row>
                                 </Container>
@@ -74,7 +89,7 @@ function AddPoke({ show, handleClose }) {
                         <Modal.Body style={{ color: '#000' }}>
                             <Form.Group className="mb-3" controlId="newpoke.Desc">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control as="textarea" rows={2} />
+                                <Form.Control as="textarea" rows={2} onChange={handleChangeDesc} />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="newpoke.types">
                                 <Form.Label>Type(s)</Form.Label>
