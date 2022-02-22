@@ -1,4 +1,4 @@
 import * as actionTypes from "./actionTypes";
 
-export const search = (todo) => ({ type: actionTypes.SEARCH, payload: todo })
-export const addPoke = (todo) => ({ type: actionTypes.ADD, payload: todo })
+export const search = (x) => ({ type: actionTypes.SEARCH, payload: x })
+export const addPoke = (x) => ({ type: actionTypes.ADD, payload: x })

@@ -4,8 +4,6 @@ import SearchIcon from '../resource/pikachu_pink_removed.png';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions/actions";
-//import { extend } from 'jquery';
-
 
 class Search extends Component //({ keypres,addPokeEvent }) => 
 {

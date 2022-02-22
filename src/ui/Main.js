@@ -11,29 +11,43 @@ import * as actions from "../actions/actions";
 //const[modalData, setModalData] = React.useState({ data: { }, show:false});
   
 class Main extends Component {// ({ list,addPokeEvent,showNewPoke }) => 
-
+  
   constructor(props) {
     super(props);
-    console.log("ahh",props);
-    this.state = {
+    this.state =  {
       addPokeEvent: props.addPokeEvent,
       showNewPoke: props.showNewPoke,
       modalData : { data: { }, show:false}
     };
+    this.showNewPoke = props.showNew;
+    console.log("zz",this.state);
+    console.log("zzc",props);
+    console.log("zz1", this.showNewPoke);
   };
 
 
-  
-  render() {
+  shouldComponentUpdate(prevProps){
+    console.log("www");
+    return false;
+    /*if(prevProps.showNewPoke !== this.props.showNewPoke){
+        this.setState({          
+          showNewPoke: this.props.showNewPoke
+        });
+    }*/
+  };
+   
 
+
+  render() {
     function setShow (vis) {
       this.state.modalData.show = vis ;// = ({ ...modalData, show: vis });
     };
     function setData (data) {
       this.state.modalData = ({ data: { ...data }, show: true });
     };
-
+{console.log("ll",this.state)}
     return (
+      
       <Container fluid >
         <Row>
           {this.props.filteredPokemons.map((data, key) => {
@@ -50,7 +64,7 @@ class Main extends Component {// ({ list,addPokeEvent,showNewPoke }) =>
           setModalShow={setData}
         />
         <AddPoke
-          show={this.state.showNewPoke}
+          show={this.showNewPoke}
           handleClose={() => this.state.addPokeEvent(false)}
         />
       </Container >
@@ -58,14 +72,23 @@ class Main extends Component {// ({ list,addPokeEvent,showNewPoke }) =>
   }
 }
 
+
 function mapStateToProps(state) {
   console.log(state);
   return {
+   // showNew : state.showNewPoke,
     pokemons: state.pokeReducer.pokemons,
     filteredPokemons: state.pokeReducer.filteredPokemons ? state.pokeReducer.filteredPokemons :state.pokeReducer.pokemons
   };
 }
 
-export default connect(mapStateToProps, null)(Main);
+function mapDispatchToProps(dispatch) {
+  console.log("dis",dispatch);
+  return {
+    showNew: false
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
 
 //export default Main;
