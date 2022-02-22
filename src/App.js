@@ -16,7 +16,6 @@ function App() {
 
   const addPokeEvent = (vis) => {
     setShowNewPoke(vis);
-    console.log("addPokeEvent","Done");
   }
 
   return (

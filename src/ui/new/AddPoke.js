@@ -22,6 +22,10 @@ function AddPoke({ show, handleClose }) {
         $(".pokeAdd").attr("tabindex", null);
         setPrev({ arr: [] });
         setNext({ arr: [] });
+        setAbility({ arr: [] });
+        setTypes({ arr: [] });
+        setBColor('#FFF');
+        setFColor('#000');
     }, [show]);
 
     const backgroundPickedEvent = (cl) => {
@@ -41,16 +45,20 @@ function AddPoke({ show, handleClose }) {
     }
 
     const savePoke = () => {
-        console.log("bcolor", bColor);
-        console.log("fcolor", fColor);
-        console.log("type", types);
-        console.log("img", img);
-        console.log("type", types.arr);
-        console.log("img", img);
-        console.log("v", values);
-        console.log("pr-p", prev.arr);
-        console.log("nx-p", next.arr);
-        console.log("abl", ability.arr);
+        var poke = {
+            No : values.no,
+            Name: values.pokename,
+            Img :   values.pokename.toLowerCase().replace(/ /g,'') +'.png',
+            Type: types.arr,
+            Desc :values.desc,
+            BColor :bColor,
+            FColor :fColor,
+            Prev: prev.arr,
+            Next : next.arr,
+            Ability: ability.arr
+        };
+        
+        console.log("poke", poke);
     }
 
     return (
