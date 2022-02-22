@@ -22,7 +22,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Search keypres={handleKeyPres} addPokeEvent={addPokeEvent}></Search>
-        <Main list={list.arr} addPokeEvent={addPokeEvent} showNewPoke={showNewPoke} ></Main>
+        <Main //list={list.arr} 
+        addPokeEvent={addPokeEvent} showNewPoke={showNewPoke} ></Main>
       </header>
     </div>
   );
