@@ -6,6 +6,7 @@ import TypeControl from "./TypeControl";
 import $ from 'jquery';
 import FileUpload from "../misc/FileUpload";
 import TextAdder from "../misc/TextAdder";
+import { postPokemon } from '../../axios/pokeserver'
 
 function AddPoke({ show, handleClose }) {
 
@@ -46,7 +47,7 @@ function AddPoke({ show, handleClose }) {
 
     const savePoke = () => {
         var poke = {
-            No : values.no,
+            id : values.no,
             Name: values.pokename,
             Img :   values.pokename.toLowerCase().replace(/ /g,'') +'.png',
             Type: types.arr,
@@ -55,10 +56,13 @@ function AddPoke({ show, handleClose }) {
             FColor :fColor,
             Prev: prev.arr,
             Next : next.arr,
-            Ability: ability.arr
+            Ability: ability.arr,
+            Rating: {
+                Score: 1,
+                Total: 1
+            }
         };
-        
-        console.log("poke", poke);
+        postPokemon(poke).then((res) => {(console.log(res.status === 201 ? "Success" :res))});
     }
 
     return (

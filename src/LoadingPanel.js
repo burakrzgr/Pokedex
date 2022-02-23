@@ -11,7 +11,7 @@ const LoadingPanel = (props) => {
     setTimeout(() => {
       var pokeindex =[];
       fetchAllPokemon().then((rs) => {
-        pokeindex = rs.data ;
+        pokeindex = rs.data.filter((x)=>{return x.id < 99000;} );
         props.LoadAction(pokeindex);
         props.loaded();
       }); 
