@@ -3,7 +3,7 @@ import { FormControl, InputGroup, Button, Container, Row, Col } from 'react-boot
 import SearchIcon from '../resource/pikachu_pink_removed.png';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as actions from "../actions/actions";
+import {search as SearchAction} from "../actions/actions";
 
 class Search extends Component //({ keypres,addPokeEvent }) => 
 {
@@ -40,7 +40,7 @@ class Search extends Component //({ keypres,addPokeEvent }) =>
 function mapDispatchToProps(dispatch) {
     return {
         actions: {
-            search: bindActionCreators(actions.search, dispatch),
+            search: bindActionCreators(SearchAction, dispatch),
         },
     };
 }

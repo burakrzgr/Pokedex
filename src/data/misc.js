@@ -1,6 +1,7 @@
 export const misc = [
 {
     No : 99004,
+    id : 99004,
     Name: '404 Not Found',
     Img :'notfound.png',
     Type: ['Ghost'],

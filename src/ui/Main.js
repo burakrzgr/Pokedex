@@ -5,30 +5,30 @@ import Popup from "./Popup";
 import AddPoke from "./new/AddPoke";
 import NewCard from "./new/NewCard";
 import { connect } from "react-redux";
-  
+
 class Main extends Component {
-  
+
   constructor(props) {
     super(props);
-    this.state =  {
+    this.state = {
       addPokeEvent: props.addPokeEvent,
       showNewPoke: props.showNewPoke,
-      modalData : { data: { }, show:false}
+      modalData: { data: {}, show: false }
     };
   };
   render() {
     const setShow = (vis) => {
-      this.setState(ps => ({...ps, modalData : {...ps.modalData,show:vis}}));
+      this.setState(ps => ({ ...ps, modalData: { ...ps.modalData, show: vis } }));
     };
     const setData = (data) => {
-      this.setState(ps => ({...ps, modalData : { data: { ...data }, show: true }}));
+      this.setState(ps => ({ ...ps, modalData: { data: { ...data }, show: true } }));
     };
     return (
       <Container fluid >
         <Row>
           {this.props.filteredPokemons.map((data, key) => {
             return (
-              <PokeCard key={key} data={data} setModalShow={() => {setData(data)}} /> //bcolor={data.BColor} fcolor={data.FColor} img={data.Img} name={data.Name} desc={data.Desc} type={data.Type} />
+              <PokeCard key={key} data={data} setModalShow={() => { setData(data) }} /> //bcolor={data.BColor} fcolor={data.FColor} img={data.Img} name={data.Name} desc={data.Desc} type={data.Type} />
             );
           })}
           <NewCard addPokeEvent={this.state.addPokeEvent} />
@@ -51,7 +51,7 @@ class Main extends Component {
 function mapStateToProps(state) {
   return {
     pokemons: state.pokeReducer.pokemons,
-    filteredPokemons: state.pokeReducer.filteredPokemons ? state.pokeReducer.filteredPokemons :state.pokeReducer.pokemons
+    filteredPokemons: state.pokeReducer.filteredPokemons ? state.pokeReducer.filteredPokemons : state.pokeReducer.pokemons
   };
 }
 

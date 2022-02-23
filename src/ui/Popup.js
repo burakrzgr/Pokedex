@@ -10,7 +10,7 @@ import Rating from "./Rating";
 function Popup({ data, show, handleClose, setModalShow }) {
 
   const [pokeRating, setPokeRating] = useReducer(reducer, {
-    id: data.No,
+    id: data.id,
     total: 1,
     score: -1,
   });
@@ -72,7 +72,7 @@ function Popup({ data, show, handleClose, setModalShow }) {
                 </h5>
                 <h6>Açıklama</h6>
                 <p>{data.Desc}</p>
-                <Rating rating={pokeRating} pokeRate={pokeRate} id={data.No} showRate={showRate}></Rating>
+                <Rating rating={pokeRating} pokeRate={pokeRate} id={data.id} showRate={showRate}></Rating>
               </Modal.Body>
               <Modal.Footer className="justify-content-between">
                 <Evolution list={data.Prev} setModalShow={setModalShow} />

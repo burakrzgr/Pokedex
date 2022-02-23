@@ -1,5 +1,6 @@
-import { pokeindex } from "../data/pokemons";
-
-export default {
-    pokemons: pokeindex
+const initalState = {
+    pokemons: [],
+    filteredPokemons :[]
   };
+  
+  export default initalState;
