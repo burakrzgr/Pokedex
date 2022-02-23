@@ -1,5 +1,4 @@
-import React, {  Component,useReducer } from "react";
-import reducer from './reducers';
+import React from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Search from './ui/Seach.js';
