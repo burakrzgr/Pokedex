@@ -4,13 +4,9 @@ import { Row, Container } from 'react-bootstrap';
 import Popup from "./Popup";
 import AddPoke from "./new/AddPoke";
 import NewCard from "./new/NewCard";
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import * as actions from "../actions/actions";
-
-//const[modalData, setModalData] = React.useState({ data: { }, show:false});
   
-class Main extends Component {// ({ list,addPokeEvent,showNewPoke }) => 
+class Main extends Component {
   
   constructor(props) {
     super(props);
@@ -19,40 +15,20 @@ class Main extends Component {// ({ list,addPokeEvent,showNewPoke }) =>
       showNewPoke: props.showNewPoke,
       modalData : { data: { }, show:false}
     };
-    this.showNewPoke = props.showNew;
-    console.log("zz",this.state);
-    console.log("zzc",props);
-    console.log("zz1", this.showNewPoke);
   };
-
-
-  shouldComponentUpdate(prevProps){
-    console.log("www");
-    return false;
-    /*if(prevProps.showNewPoke !== this.props.showNewPoke){
-        this.setState({          
-          showNewPoke: this.props.showNewPoke
-        });
-    }*/
-  };
-   
-
-
   render() {
-    function setShow (vis) {
-      this.state.modalData.show = vis ;// = ({ ...modalData, show: vis });
+    const setShow = (vis) => {
+      this.setState(ps => ({...ps, modalData : {...ps.modalData,show:vis}}));
     };
-    function setData (data) {
-      this.state.modalData = ({ data: { ...data }, show: true });
+    const setData = (data) => {
+      this.setState(ps => ({...ps, modalData : { data: { ...data }, show: true }}));
     };
-{console.log("ll",this.state)}
     return (
-      
       <Container fluid >
         <Row>
           {this.props.filteredPokemons.map((data, key) => {
             return (
-              <PokeCard key={key} data={data} setModalShow={setData} /> //bcolor={data.BColor} fcolor={data.FColor} img={data.Img} name={data.Name} desc={data.Desc} type={data.Type} />
+              <PokeCard key={key} data={data} setModalShow={() => {setData(data)}} /> //bcolor={data.BColor} fcolor={data.FColor} img={data.Img} name={data.Name} desc={data.Desc} type={data.Type} />
             );
           })}
           <NewCard addPokeEvent={this.state.addPokeEvent} />
@@ -61,10 +37,10 @@ class Main extends Component {// ({ list,addPokeEvent,showNewPoke }) =>
           data={this.state.modalData.data}
           show={this.state.modalData.show}
           handleClose={() => setShow(false)}
-          setModalShow={setData}
+          setModalShow={(data) => setData(data)}
         />
         <AddPoke
-          show={this.showNewPoke}
+          show={this.props.showNewPoke}
           handleClose={() => this.state.addPokeEvent(false)}
         />
       </Container >
@@ -72,23 +48,11 @@ class Main extends Component {// ({ list,addPokeEvent,showNewPoke }) =>
   }
 }
 
-
 function mapStateToProps(state) {
-  console.log(state);
   return {
-   // showNew : state.showNewPoke,
     pokemons: state.pokeReducer.pokemons,
     filteredPokemons: state.pokeReducer.filteredPokemons ? state.pokeReducer.filteredPokemons :state.pokeReducer.pokemons
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  console.log("dis",dispatch);
-  return {
-    showNew: false
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
-
-//export default Main;
+export default connect(mapStateToProps, null)(Main);
