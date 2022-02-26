@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
-import { SketchPicker } from 'react-color';
-import { OverlayTrigger, Button, Popover, Container, Row, Col } from "react-bootstrap";
+import React from 'react';
+import { OverlayTrigger, Popover, Container, Row, Col } from "react-bootstrap";
 
-function TypeTooltip({Component,data}) {
+function TypeTooltip({children}) {
     const Pop = (
         <Popover id="popover-contained"  >
             <Popover.Header>
@@ -22,7 +21,7 @@ function TypeTooltip({Component,data}) {
    
     return (
         <OverlayTrigger trigger="click" placement="right" overlay={Pop}>
-            <Component />
+            {children}
         </OverlayTrigger>);
 };
 

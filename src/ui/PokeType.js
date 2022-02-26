@@ -1,9 +1,10 @@
 import React from "react";
+import TypeTooltip from "./TypeTooltip";
 
 function PokeType({ list }) {
      
      const Type = ({i}) => {
-         return(<span key={i} className={"ms-1 me-1 type " + i} >
+         return(<span className={"ms-1 me-1 type " + i} >
                          {i} 
                     </span>);
      }
@@ -11,7 +12,9 @@ function PokeType({ list }) {
      return (
           <>
                {list ? list.map(i => (
-                    <Type i={i}></Type>
+                    <TypeTooltip key={i} > 
+                         <Type i={i}></Type>
+                    </TypeTooltip>
                )) : <div />}
           </>
      );
