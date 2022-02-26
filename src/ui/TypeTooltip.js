@@ -1,17 +1,22 @@
 import React from 'react';
-import { OverlayTrigger, Popover, Container, Row, Col } from "react-bootstrap";
+import { OverlayTrigger, Popover, Container,Button, Row, Col } from "react-bootstrap";
 
-function TypeTooltip({children}) {
+function TypeTooltip({children,data}) {
     const Pop = (
         <Popover id="popover-contained"  >
             <Popover.Header>
-                {"Yes-Yes"}
+                {data.Name}
             </Popover.Header>
-            <Popover.Body className='p-0' >
-                <Container className='p-0'>
+            <Popover.Body  >
+                <Container >
                     <Row >
                         <Col md="auto">
-                        {"man-thing"}
+                        {data.Desc}
+                        </Col>
+                    </Row> 
+                     <Row >
+                        <Col md="auto">
+                        <Button variant='dark' onClick={() => {alert("begone man-thing")}}>Tip Detayları</Button>
                         </Col>
                     </Row>
                 </Container>
@@ -21,7 +26,7 @@ function TypeTooltip({children}) {
    
     return (
         <OverlayTrigger trigger="click" placement="right" overlay={Pop}>
-            {children}
+            <span >{children}</span>
         </OverlayTrigger>);
 };
 

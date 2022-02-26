@@ -20,10 +20,10 @@ const LoadingPanel = (props) => {
         props.loaded();
       }); 
     }, 300);
-    
+
   });  
   
-  {  const newLocal = postImg("test.png", { b64 });  }
+  { /* const newLocal = postImg("test.png", { b64 }); */ }
     return (
   
       <Stack gap={5} className="col-md-5 mx-auto mt-5">
