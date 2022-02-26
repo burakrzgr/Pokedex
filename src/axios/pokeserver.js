@@ -10,5 +10,5 @@ const fetchType = (id) => {return axios.get("http://localhost:3001/type/"+id);}
 const fetchTypeByName = (name) => {return axios.get("http://localhost:3001/type?Name="+name);}
 const fetchAllTypes = () => {return axios.get("http://localhost:3001/type");} 
 
-export {fetchPokemon,fetchAllPokemon, patchPokemon,postPokemon,fetchType,fetchAllTypes};
+export {fetchPokemon,fetchAllPokemon, patchPokemon,postPokemon,fetchType,fetchTypeByName,fetchAllTypes};
 
