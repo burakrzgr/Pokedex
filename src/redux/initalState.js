@@ -1,6 +1,8 @@
 const initalState = {
     pokemons: [],
-    filteredPokemons :[]
+    filteredPokemons :[],
+    showNewModal : false,
+    newModalValue : undefined
   };
   
   export default initalState;

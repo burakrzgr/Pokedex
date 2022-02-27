@@ -6,6 +6,8 @@ import Evolution from "./Evolution";
 import PokeType from "./PokeType";
 import { fetchPokemon, patchPokemon } from '../axios/pokeserver'
 import Rating from "./Rating";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 
 function Popup({ data, show, handleClose, setModalShow }) {
 
@@ -35,7 +37,7 @@ function Popup({ data, show, handleClose, setModalShow }) {
       show={show}
       size="xl"
       aria-labelledby="contained-modal-title-vcenter"
-      onHide={handleClose}
+      onHide={()=>handleClose(false,false)}
       backdrop="static"
       centered
     >
@@ -54,8 +56,12 @@ function Popup({ data, show, handleClose, setModalShow }) {
               <Modal.Header closeButton>
                 <Modal.Title
                   id="contained-modal-title-vcenter"
-                  style={{ color: data.FColor }} >
-                  {data.Name}
+                  style={{ color: data.FColor }} 
+                >
+                  <div className="d-flex justify-content-between ">
+                    <div >{data.Name} {data.id<99000 ?(<span className="text-muted">#{data.id}</span>):(<></>)} </div>
+                    <div className="ps-4" onClick={() => handleClose(true)}><FontAwesomeIcon icon={faEdit} /></div>
+                  </div>
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body style={{ color: data.FColor }}>

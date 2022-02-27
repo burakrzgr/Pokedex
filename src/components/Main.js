@@ -17,11 +17,20 @@ class Main extends Component {
     };
   };
   render() {
-    const setShow = (vis) => {
-      this.setState(ps => ({ ...ps, modalData: { ...ps.modalData, show: vis } }));
+    const setShow = (vis,newpoke) => {
+      console.log("ve",vis);
+      console.log("e",newpoke);
+      this.setState(ps => ({ ...ps, modalData: { ...ps.modalData, show: vis }}));
+      console.log("e",this.state);
+    //  if(newpoke)
+    //    this.state.addPokeEvent(true);
     };
     const setData = (data) => {
       this.setState(ps => ({ ...ps, modalData: { data: { ...data }, show: true } }));
+    };
+    const closeEdit = () => {
+      this.setState(ps => ({ ...ps, editNewPoke :false }));
+      this.state.addPokeEvent(false);
     };
     return (
       <Container fluid >
@@ -36,12 +45,14 @@ class Main extends Component {
         <Popup
           data={this.state.modalData.data}
           show={this.state.modalData.show}
-          handleClose={() => setShow(false)}
+          handleClose={(newPoke) => {setShow(false,newPoke)}}
           setModalShow={(data) => setData(data)}
         />
         <AddPoke
           show={this.props.showNewPoke}
-          handleClose={() => this.state.addPokeEvent(false)}
+          edit={this.props.showNewModal}
+          data={this.props.newModalValue}
+          handleClose={() => closeEdit()}
         />
       </Container >
     );
@@ -51,7 +62,9 @@ class Main extends Component {
 function mapStateToProps(state) {
   return {
     pokemons: state.pokeReducer.pokemons,
-    filteredPokemons: state.pokeReducer.filteredPokemons ? state.pokeReducer.filteredPokemons : state.pokeReducer.pokemons
+    filteredPokemons: state.pokeReducer.filteredPokemons ? state.pokeReducer.filteredPokemons : state.pokeReducer.pokemons,
+    showNewModal : state.showNewModal,
+    newModalValue : state.newModalValue
   };
 }
 

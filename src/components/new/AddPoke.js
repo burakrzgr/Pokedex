@@ -9,7 +9,7 @@ import TextAdder from "../misc/TextAdder";
 import { postPokemon } from '../../axios/pokeserver'
 import { postImg } from '../../axios/imgServer'
 
-function AddPoke({ show, handleClose }) {
+function AddPoke({ show, handleClose, edit,data }) {
 
     const [values, setValues] = React.useState({ no: "", pokename: "", desc: "" });
     const [img, setImg] = React.useState(null);
@@ -22,12 +22,24 @@ function AddPoke({ show, handleClose }) {
 
     useEffect(() => {
         $(".pokeAdd").attr("tabindex", null);
-        setPrev({ arr: [] });
-        setNext({ arr: [] });
-        setAbility({ arr: [] });
-        setTypes({ arr: [] });
-        setBColor('#FFF');
-        setFColor('#000');
+        console.log("ed",edit);        console.log("data",data);
+        if(edit && data && data.data){
+            setPrev({ arr: data.Prev });
+            setNext({ arr:  data.Next });
+            setAbility({ arr: data.Ability });
+            setTypes({ arr: data.Type });
+            setBColor(data.BColor);
+            setFColor(data.FColor); 
+        }
+        else
+        { 
+            setPrev({ arr: [] });
+            setNext({ arr: [] });
+            setAbility({ arr: [] });
+            setTypes({ arr: [] });
+            setBColor('#FFF');
+            setFColor('#000');
+        }
     }, [show]);
 
     const backgroundPickedEvent = (cl) => {

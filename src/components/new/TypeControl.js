@@ -26,7 +26,7 @@ function TypeControl({list,typeChanged}) {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu variant="dark">
-                        {types ? types.map(x => (<Dropdown.Item onClick={() => setType(x.Name)}>{x.Name}</Dropdown.Item>)):<></>}
+                        {types ? types.map(x => (<Dropdown.Item key={x.id} onClick={() => setType(x.Name)}>{x.Name}</Dropdown.Item>)):<></>}
                         
                     </Dropdown.Menu>
                 </Dropdown>
