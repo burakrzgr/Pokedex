@@ -1,8 +1,8 @@
 import React from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Search from './ui/Seach.js';
-import Main from './ui/Main.js';
+import Search from './components/Seach';
+import Main from './components/Main';
 import LoadingPanel from './LoadingPanel'
 
 
