@@ -46,23 +46,15 @@ function Popup({ data, show, handleClose, setModalShow }) {
               {data.Img ? (
                 <img
                   src={require("../resource/img/" + data.Img)}
-                  style={{
-                    height: "100%",
-                    width: "20rem",
-                    objectFit: "contain",
-                  }}
-                  alt="Pokemon"
+                  style={{height: "100%", width: "20rem", objectFit: "contain" }} alt="Pokemon" 
                 />
-              ) : (
-                <div></div>
-              )}
+              ) : (  <div></div> )}
             </Col>
             <Col>
               <Modal.Header closeButton>
                 <Modal.Title
                   id="contained-modal-title-vcenter"
-                  style={{ color: data.FColor }}
-                >
+                  style={{ color: data.FColor }} >
                   {data.Name}
                 </Modal.Title>
               </Modal.Header>

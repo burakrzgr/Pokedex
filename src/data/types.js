@@ -90,4 +90,31 @@ export const types = [
         Imm: [],
         Style: {Header_Bg: "#ce76fb", Header_Fg: "#000000", Detail_Bg: "#32ef879c", Detail_Fg: "#000000" }
     },
+    {
+        id: 11,
+        Name : "Grass",
+        Desc: "Buz Türünde Saldırılar Yapar.",
+        SE: ["Water", "Ground", "Rock"],
+        NE: ["Fire", "Grass", "Poison","Flying","Bug","Dragon","Steel"],
+        Imm: [],
+        Style: {Header_Bg: "#ce76fb", Header_Fg: "#000000", Detail_Bg: "#32ef879c", Detail_Fg: "#000000" }
+    },
+    {
+        id: 12,
+        Name : "Fairy",
+        Desc: "Buz Türünde Saldırılar Yapar.",
+        SE: ["Water", "Ground", "Rock"],
+        NE: ["Fire", "Grass", "Poison","Flying","Bug","Dragon","Steel"],
+        Imm: [],
+        Style: {Header_Bg: "#ce76fb", Header_Fg: "#000000", Detail_Bg: "#32ef879c", Detail_Fg: "#000000" }
+    },
+    {
+        id: 13,
+        Name : "Steel",
+        Desc: "Buz Türünde Saldırılar Yapar.",
+        SE: ["Water", "Ground", "Rock"],
+        NE: ["Fire", "Grass", "Poison","Flying","Bug","Dragon","Steel"],
+        Imm: [],
+        Style: {Header_Bg: "#ce76fb", Header_Fg: "#000000", Detail_Bg: "#32ef879c", Detail_Fg: "#000000" }
+    }
 ]
