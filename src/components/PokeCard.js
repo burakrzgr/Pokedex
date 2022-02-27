@@ -5,7 +5,7 @@ import { Image } from "react-bootstrap";
 const PokeCard = ({ data,setModalShow }) => {
     return (
         <Card style={{ width: '17rem', backgroundColor: data.BColor, color: data.FColor }} className="m-3">
-            <Card.Img variant="top" as={Image} src={require('../resource/img/'+data.Img)} fluid={true} style={{ height: '12rem', width: '100%', objectFit: 'contain' }} />
+            <Card.Img variant="top" as={Image} src={"/assets/img/pokemons/" + data.Img} fluid={true} style={{ height: '12rem', width: '100%', objectFit: 'contain' }} />
             <Card.Body>
                 <Card.Title>{data.Name}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">

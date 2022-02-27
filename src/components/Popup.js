@@ -45,7 +45,7 @@ function Popup({ data, show, handleClose, setModalShow }) {
             <Col md="auto" className="m-1">
               {data.Img ? (
                 <img
-                  src={require("../resource/img/" + data.Img)}
+                  src={"/assets/img/pokemons/" + data.Img}
                   style={{height: "100%", width: "20rem", objectFit: "contain" }} alt="Pokemon" 
                 />
               ) : (  <div></div> )}
