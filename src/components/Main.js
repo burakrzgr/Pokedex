@@ -11,7 +11,6 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addPokeEvent: props.addPokeEvent,
       showNewPoke: props.showNewPoke,
       modalData: { data: {}, show: false }
     };
@@ -25,7 +24,6 @@ class Main extends Component {
     };
     const closeEdit = () => {
       this.setState(ps => ({ ...ps, editNewPoke :false }));
-      this.state.addPokeEvent(false);
     };
     return (
       <Container fluid >
@@ -35,7 +33,6 @@ class Main extends Component {
               <PokeCard key={key} data={data} setModalShow={() => { setData(data) }} /> //bcolor={data.BColor} fcolor={data.FColor} img={data.Img} name={data.Name} desc={data.Desc} type={data.Type} />
             );
           })}
-          <NewCard addPokeEvent={this.state.addPokeEvent} />
         </Row>
         <Popup
           data={this.state.modalData.data}
@@ -44,9 +41,6 @@ class Main extends Component {
           setModalShow={(data) => setData(data)}
         />
         <AddPoke
-          /*show={this.props.showNewPoke}
-          edit={this.props.showNewModal}
-          data={this.props.newModalValue}*/
           handleClose={() => closeEdit()}
         />
       </Container >

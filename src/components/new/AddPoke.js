@@ -15,7 +15,7 @@ import jqr from 'jquery';
 function AddPoke(props) {
 
     const [values, setValues] = React.useState({ no: "", pokename: "", desc: "" });
-    const [img, setImg] = React.useState(null);
+    const [img, setImg] = React.useState({changed:false,img:null});
     const [bColor, setBColor] = React.useState('#FFF');
     const [fColor, setFColor] = React.useState('#000');
     const [types, setTypes] = React.useState({ arr: [] });
@@ -35,7 +35,7 @@ function AddPoke(props) {
             setFColor( props.newModalValue.FColor); 
             console.log({ no: props.newModalValue.id, pokename: props.newModalValue.Name, desc: props.newModalValue.Desc });
             setValues({ no: props.newModalValue.id, pokename: props.newModalValue.Name, desc: props.newModalValue.Desc });
-            setImg("/assets/img/pokemons/" + props.newModalValue.Img);
+            setImg({changed:false,img:"/assets/img/pokemons/" + props.newModalValue.Img});
         }
         else
         { 
@@ -85,7 +85,9 @@ function AddPoke(props) {
         postPokemon(poke).then(res => {res.status === 201 ? updatedEvent(poke,img,imgName) : failedEvent()});
     }
     function updatedEvent(poke,img,imgName){
-        fileUpload(img,imgName);
+        if(img.changed){
+            fileUpload(img.img,imgName);
+        }
     }  
     function failedEvent(){
         console.log("nooooo!")

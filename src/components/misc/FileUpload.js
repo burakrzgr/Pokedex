@@ -9,12 +9,12 @@ const fileTypes = ["JPG", "PNG", "BMP"];
 function FileUpload({file,setFile}) {
   const [tempUrl, setTempUrl] = useState(null);
   const handleChange = (f) => {
-    setFile(f);
+    setFile({changed:true,img:f});
     setTempUrl(URL.createObjectURL(f));
   };
   const removeImg = () => {
-    setFile(null);
-    setTempUrl(null);
+    setFile({changed:false,img:null});
+    setTempUrl(undefined);
   };
 
 
@@ -22,7 +22,7 @@ function FileUpload({file,setFile}) {
     <FileUploader
       handleChange={handleChange}
       name="file"
-      children={ChildComponent(tempUrl ? tempUrl:file, removeImg)}
+      children={ChildComponent(tempUrl ? tempUrl:file.img, removeImg)}
       hoverTitle="Drop Here"
       types={fileTypes}
       multiple={false}
