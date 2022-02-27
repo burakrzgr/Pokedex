@@ -1,14 +1,17 @@
+import { faX } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faX } from '@fortawesome/free-solid-svg-icons'
+import TypeTooltip from '../TypeTooltip';
 
 function ClosablePokeType({ list,removeType }) {
      return (
           <>
                {list ? list.map(i => (
-                    <span key={i} className={"ms-1 me-2 pe-2 type " + i}>
-                         {i}  <FontAwesomeIcon icon={faX} className="ms-1 me-1 p-0 typeX" onClick={() => removeType(i)}/>
-                    </span>
+                    <TypeTooltip key={i.id} data={i} tooltipLevel={1}> 
+                         <span className={"ms-1 me-2 pe-2 type " + i.Name}>
+                              {i.Name}  <FontAwesomeIcon icon={faX} className="ms-1 me-1 p-0 typeX" onClick={() => removeType(i.Name)}/>
+                         </span>
+                    </TypeTooltip>
                )) : <div />}
           </>
      );

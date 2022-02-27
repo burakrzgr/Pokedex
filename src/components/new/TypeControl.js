@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dropdown, Stack } from "react-bootstrap";
 import ClosablePokeType from './ClosablePokeType';
+import {types} from '../../data/types'
 
 function TypeControl({list,typeChanged}) {
 
@@ -25,22 +26,18 @@ function TypeControl({list,typeChanged}) {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu variant="dark">
-                        <Dropdown.Item onClick={() => setType("Normal")}>Normal</Dropdown.Item>
-                        <Dropdown.Item onClick={() => setType("Electric")}>Electric</Dropdown.Item>
-                        <Dropdown.Item onClick={() => setType("Fire")}>Fire</Dropdown.Item>
-                        <Dropdown.Item onClick={() => setType("Ghost")}>Ghost</Dropdown.Item>
-                        <Dropdown.Item onClick={() => setType("Grass")}>Grass</Dropdown.Item>
-                        <Dropdown.Item onClick={() => setType("Dragon")}>Dragon</Dropdown.Item>
+                        {types ? types.map(x => (<Dropdown.Item onClick={() => setType(x.Name)}>{x.Name}</Dropdown.Item>)):<></>}
+                        
                     </Dropdown.Menu>
                 </Dropdown>
             </>
         );
     }
-
+    let typeList = types.filter (x => list.arr.includes(x.Name));
     return (
         <Stack direction="horizontal" gap={0}>
             <div>
-                <ClosablePokeType list={list.arr} removeType={removeTypeFromList} />
+                <ClosablePokeType list={typeList} removeType={removeTypeFromList} />
             </div>
             {list.arr.length> 2 ? <div className='ms-2 text-danger font-weight-bold'>En fazla 2 tip olabilir.</div> :<SelectType setType={addTypeToList} />}
         </Stack>
