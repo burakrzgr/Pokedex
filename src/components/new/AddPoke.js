@@ -33,7 +33,6 @@ function AddPoke(props) {
             setTypes({ arr:  props.newModalValue.Type });
             setBColor( props.newModalValue.BColor);
             setFColor( props.newModalValue.FColor); 
-            console.log({ no: props.newModalValue.id, pokename: props.newModalValue.Name, desc: props.newModalValue.Desc });
             setValues({ no: props.newModalValue.id, pokename: props.newModalValue.Name, desc: props.newModalValue.Desc });
             setImg({changed:false,img:"/assets/img/pokemons/" + props.newModalValue.Img});
         }
@@ -45,6 +44,8 @@ function AddPoke(props) {
             setTypes({ arr: [] });
             setBColor('#FFF');
             setFColor('#000');
+            setValues({ no: "", pokename: "", desc: "" });
+            setImg({changed:true,img:undefined});
         }
     }, [props.showNewModal]);
 
