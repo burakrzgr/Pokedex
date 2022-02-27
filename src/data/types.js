@@ -7,7 +7,7 @@ export const types = [
         SE : ["Bug", "Grass", "Ice", "Steel"],
         NE: ["Dragon", "Fire", "Rock", "Water"],
         Imm: [],
-        Style: {Header_Bg: "#ce663b", Header_Fg: "ffffff", Detail_Bg: "#ef875c", Detail_Fg: "ffffff" }
+        Style: {Header_Bg: "#ce663b", Header_Fg: "#000000", Detail_Bg: "#ef875c", Detail_Fg: "#000000" }
     },
     {
         id: 2,
@@ -16,7 +16,7 @@ export const types = [
         SE: ["Flying", "Water"],
         NE: ["Dragon", "Electric", "Grass"],
         Imm: [],
-        Style: {Header_Bg: "#de764b", Header_Fg: "ffffff", Detail_Bg: "#ef875c", Detail_Fg: "ffffff" }
+        Style: {Header_Bg: "#de764b", Header_Fg: "#000000", Detail_Bg: "#ef875c", Detail_Fg: "#000000" }
     },
     {
         id: 3,
@@ -25,7 +25,7 @@ export const types = [
         SE: ["Fire", "Ground", "Rock"],
         NE: ["Dragon", "Grass", "Water"],
         Imm: [],
-        Style: {Header_Bg: "#de764b", Header_Fg: "ffffff", Detail_Bg: "#ef875c", Detail_Fg: "ffffff" }
+        Style: {Header_Bg: "#ce76fb", Header_Fg: "#000000", Detail_Bg: "#2ef879", Detail_Fg: "#000000" }
     },
     {
         id: 4,
@@ -34,7 +34,7 @@ export const types = [
         SE: ["Ghost", "Psychic"],
         NE: ["Dark"],
         Imm: ["Normal"],
-        Style: {Header_Bg: "#de764b", Header_Fg: "ffffff", Detail_Bg: "#ef875c", Detail_Fg: "ffffff" }
+        Style: {Header_Bg: "#de764b", Header_Fg: "#000000", Detail_Bg: "#ef875c", Detail_Fg: "#000000" }
     },
     {
         id: 5,
@@ -43,15 +43,51 @@ export const types = [
         SE: ["Dragon"],
         NE: ["Steel"],
         Imm: ["Fairy"],
-        Style: {Header_Bg: "#de764b", Header_Fg: "ffffff", Detail_Bg: "#ef875c", Detail_Fg: "ffffff" }
+        Style: {Header_Bg: "#de764b", Header_Fg: "#000000", Detail_Bg: "#ef875c", Detail_Fg: "#000000" }
     },
     {
         id: 6,
         Name: "Flying",
-        Desc: "Uçabien pokemonlara has saldırılar yapar.",
+        Desc: "Uçabilen pokemonlara has saldırılar yapar.",
         SE : ["Bug", "Fighting", "Grass"],
         NE: ["Electric","Rock","Steel"],
         Imm: [],
-        Style: {Header_Bg: "#e8a14f", Header_Fg: "ffffff", Detail_Bg: "#f9c37f", Detail_Fg: "ffffff" }
-    }
+        Style: {Header_Bg: "#e8a14f", Header_Fg: "#000000", Detail_Bg: "#f9c37f", Detail_Fg: "#000000" }
+    },
+    {
+        id: 7,
+        Name: "Ground",
+        Desc: "Yer türündeki pokemonlara has saldırılar yapar.",
+        SE : ["Electric", "Fire", "Poison","Rock","Steel"],
+        NE: ["Bug","Grass"],
+        Imm: [],
+        Style: {Header_Bg: "#faf68c", Header_Fg: "#000000", Detail_Bg: "#fbf8ac", Detail_Fg: "#000000" }
+    },
+    {
+        id: 8,
+        Name: "Rock",
+        Desc: "Kaya Türünde Saldırılar Yapar.",
+        SE : ["Bug", "Fire","Flying", "Ice"],
+        NE: ["Fighting","Ground","Steel"],
+        Imm: [],
+        Style: {Header_Bg: "#faf68c", Header_Fg: "#000000", Detail_Bg: "#fbf8ac", Detail_Fg: "#000000" }
+    },
+    {
+        id: 9,
+        Name: "Bug",
+        Desc: "Böcek Türünde Saldırılar Yapar.",
+        SE : ["Bug", "Fire","Flying", "Ice"],
+        NE: ["Fighting","Ground","Steel"],
+        Imm: [],
+        Style: {Header_Bg: "#faf68c", Header_Fg: "#000000", Detail_Bg: "#fbf8ac", Detail_Fg: "#000000" }
+    },
+    {
+        id: 10,
+        Name : "Ice",
+        Desc: "Buz Türünde Saldırılar Yapar.",
+        SE: ["Fire", "Ground", "Rock"],
+        NE: ["Dragon", "Grass", "Water"],
+        Imm: [],
+        Style: {Header_Bg: "#ce76fb", Header_Fg: "#000000", Detail_Bg: "#32ef879c", Detail_Fg: "#000000" }
+    },
 ]

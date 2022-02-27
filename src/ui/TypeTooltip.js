@@ -14,15 +14,33 @@ function TypeTooltip({ children, data, tooltipLevel }) {
                 <Container >
                     <Row >
                         <Col md="auto">
-                            {data.SE ? <PokeType list={data.SE} tooltipLevel={tooltipLevel -1}></PokeType> : <>Hata!</>}
-                        </Col>
-                    </Row>
-                    <Row >
-                        <Col md="auto">
                             {data.Desc}
                         </Col>
                     </Row>
-                    <Row>
+                    <Row className='pt-3'>
+                        <Col md="auto">
+                            <h5>Super Effective (x2)</h5>
+                            {data.SE && data.SE.length ? <PokeType list={data.SE} tooltipLevel={tooltipLevel -1}></PokeType> : <h5 className='text-muted ps-2' ><i>Not Exist</i></h5>}
+                            
+                        </Col>
+                    </Row>
+                    <Row className='pt-3'>
+                        <Col md="auto">
+                            <h5>Not Very Effective (x0.5)</h5>
+                            <div>
+                                {data.NE && data.NE.length? <PokeType list={data.NE} tooltipLevel={tooltipLevel -1}></PokeType> : <h5 className='text-muted ps-2' ><i>Not Exist</i></h5>}
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row className='pt-3'>
+                        <Col md="auto">
+                            <h5>Immune (x0)</h5>
+                            <div>
+                                {data.Imm && data.Imm.length ? <PokeType list={data.Imm} tooltipLevel={tooltipLevel -1}></PokeType> : <h5 className='text-muted ps-2' ><i>Not Exist</i></h5>}
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row className='pt-3'>
                         <Col className='p-3 pb-0 text-center' >
                             <Button variant='outline-dark' className='w-75' onClick={() => { alert("begone man-thing") }} style={{ backgroundColor: '#fff2' }}>Detaylar</Button>
                         </Col>
@@ -31,8 +49,6 @@ function TypeTooltip({ children, data, tooltipLevel }) {
             </Popover.Body>
         </Popover>
     );
-
-        console.log(tooltipLevel);
     return (
         tooltipLevel > 0 ?
             <OverlayTrigger trigger="click" placement="right" overlay={Pop}>
