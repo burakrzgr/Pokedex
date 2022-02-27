@@ -6,7 +6,7 @@ import "../../border.css";
 
 const fileTypes = ["JPG", "PNG", "BMP"];
 //npm i --save react-drag-drop-files
-function FileUpload({setFile}) {
+function FileUpload({file,setFile}) {
   const [tempUrl, setTempUrl] = useState(null);
   const handleChange = (f) => {
     setFile(f);
@@ -22,7 +22,7 @@ function FileUpload({setFile}) {
     <FileUploader
       handleChange={handleChange}
       name="file"
-      children={ChildComponent(tempUrl, removeImg)}
+      children={ChildComponent(tempUrl ? tempUrl:file, removeImg)}
       hoverTitle="Drop Here"
       types={fileTypes}
       multiple={false}

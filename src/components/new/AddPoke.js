@@ -3,13 +3,16 @@ import React, { useEffect } from "react";
 import "../../button.css";
 import ColorPicker from "../misc/ColorPicker";
 import TypeControl from "./TypeControl";
-import $ from 'jquery';
 import FileUpload from "../misc/FileUpload";
 import TextAdder from "../misc/TextAdder";
 import { postPokemon } from '../../axios/pokeserver'
 import { postImg } from '../../axios/imgServer'
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import {openNewPoke as OpenNewAction} from "../../actions/actions";
+import jqr from 'jquery';
 
-function AddPoke({ show, handleClose, edit,data }) {
+function AddPoke(props) {
 
     const [values, setValues] = React.useState({ no: "", pokename: "", desc: "" });
     const [img, setImg] = React.useState(null);
@@ -21,15 +24,18 @@ function AddPoke({ show, handleClose, edit,data }) {
     const [ability, setAbility] = React.useState({ arr: [] });
 
     useEffect(() => {
-        $(".pokeAdd").attr("tabindex", null);
-        console.log("ed",edit);        console.log("data",data);
-        if(edit && data && data.data){
-            setPrev({ arr: data.Prev });
-            setNext({ arr:  data.Next });
-            setAbility({ arr: data.Ability });
-            setTypes({ arr: data.Type });
-            setBColor(data.BColor);
-            setFColor(data.FColor); 
+        jqr(".pokeAdd").attr("tabindex", null); 
+        console.log("www");
+        if(props.showNewModal && props.newModalValue){
+            setPrev({ arr:  props.newModalValue.Prev });
+            setNext({ arr:   props.newModalValue.Next });
+            setAbility({ arr:  props.newModalValue.Ability });
+            setTypes({ arr:  props.newModalValue.Type });
+            setBColor( props.newModalValue.BColor);
+            setFColor( props.newModalValue.FColor); 
+            console.log({ no: props.newModalValue.id, pokename: props.newModalValue.Name, desc: props.newModalValue.Desc });
+            setValues({ no: props.newModalValue.id, pokename: props.newModalValue.Name, desc: props.newModalValue.Desc });
+            setImg("/assets/img/pokemons/" + props.newModalValue.Img);
         }
         else
         { 
@@ -40,7 +46,7 @@ function AddPoke({ show, handleClose, edit,data }) {
             setBColor('#FFF');
             setFColor('#000');
         }
-    }, [show]);
+    }, [props.showNewModal]);
 
     const backgroundPickedEvent = (cl) => {
         setBColor(cl);
@@ -112,10 +118,10 @@ function AddPoke({ show, handleClose, edit,data }) {
 
     return (
         <Modal
-            show={show}
+            show={props.showNewModal}
             size="xl"
             aria-labelledby="contained-modal-title-vcenter"
-            onHide={handleClose}
+            onHide={() => props.actions.open({showNewModal:false,newModalValue : undefined})}
             backdrop="static"
             className="pokeAdd"
             centered
@@ -136,13 +142,13 @@ function AddPoke({ show, handleClose, edit,data }) {
                                         <Col xl={4}>
                                             <Form.Group className="mb-3" controlId="newpoke.No">
                                                 <Form.Label>#No</Form.Label>
-                                                <Form.Control type="number" min="1" max="999" placeholder="#No" onChange={handleChangeNo} />
+                                                <Form.Control type="number" min="1" max="999" placeholder="#No" value={values.no} onChange={handleChangeNo} />
                                             </Form.Group>
                                         </Col>
                                         <Col xl={8}>
                                             <Form.Group className="mb-3" controlId="newpoke.Name">
                                                 <Form.Label>Pokemon Name</Form.Label>
-                                                <Form.Control type="text" placeholder="Poke Name" onChange={handleChangeName} />
+                                                <Form.Control type="text" placeholder="Poke Name" value={values.pokename} onChange={handleChangeName} />
                                             </Form.Group>
                                         </Col></Row>
                                 </Container>
@@ -151,7 +157,7 @@ function AddPoke({ show, handleClose, edit,data }) {
                         <Modal.Body style={{ color: '#000' }}>
                             <Form.Group className="mb-3" controlId="newpoke.Desc">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control as="textarea" rows={2} onChange={handleChangeDesc} />
+                                <Form.Control as="textarea" rows={2} value={values.desc} onChange={handleChangeDesc} />
                             </Form.Group>
                             <Stack direction="horizontal">
                                 <Form.Group className="mb-3" controlId="newpoke.BColor">
@@ -206,4 +212,18 @@ function AddPoke({ show, handleClose, edit,data }) {
     );
 }
 
-export default AddPoke;
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: {
+            open: bindActionCreators(OpenNewAction, dispatch)
+        },
+    };
+}
+
+export default connect(
+    (state) => {
+         return {
+            showNewModal: state.pokeReducer.showNewModal,
+            newModalValue: state.pokeReducer.newModalValue
+         };
+  }, mapDispatchToProps)(AddPoke);

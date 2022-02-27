@@ -3,7 +3,7 @@ import { FormControl, InputGroup, Button, Container, Row, Col } from 'react-boot
 import SearchIcon from '../resource/pikachu_pink_removed.png';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {search as SearchAction} from "../actions/actions";
+import {search as SearchAction, openNewPoke as OpenNewAction} from "../actions/actions";
 
 class Search extends Component //({ keypres,addPokeEvent }) => 
 {
@@ -27,7 +27,7 @@ class Search extends Component //({ keypres,addPokeEvent }) =>
                                 //   onKeyUp={keypres}
                                 onKeyUp={(e) => this.props.actions.search(e.target.value)}
                             />
-                            <Button id="button-addon2" variant="danger" onClick={() => this.state.addPokeEvent(true)} >
+                            <Button id="button-addon2" variant="danger" onClick={() => this.props.actions.open({showNewModal:true,newModalValue : undefined})} >
                                 <img src={SearchIcon} alt="Logo" style={{ width: "30px", height: "30px" }} />
                             </Button>
                         </InputGroup>
@@ -41,6 +41,7 @@ function mapDispatchToProps(dispatch) {
     return {
         actions: {
             search: bindActionCreators(SearchAction, dispatch),
+            open: bindActionCreators(OpenNewAction, dispatch)
         },
     };
 }

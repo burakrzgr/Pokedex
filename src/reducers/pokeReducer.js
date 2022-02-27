@@ -5,9 +5,9 @@ export default function pokeReducer(state = initalState, action) {
   var newTodos;
   switch (action.type) 
   {
+    //console.log(actions);
     case actionTypes.OPEN:
-      state.showNewModal = (action.payload !== undefined);
-      return { ...state,showNewModal:state.showNewModal,newModalValue:action.payload};
+      return { ...state,showNewModal:action.payload.showNewModal,newModalValue:action.payload.newModalValue};
     case actionTypes.SEARCH:
         state.filteredPokemons = state.pokemons.filter((x) =>
         x.Name.toLowerCase().includes(action.payload.toLowerCase()));

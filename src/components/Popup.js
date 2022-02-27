@@ -8,11 +8,14 @@ import { fetchPokemon, patchPokemon } from '../axios/pokeserver'
 import Rating from "./Rating";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { openNewPoke as OpenNewAction} from "../actions/actions";
 
-function Popup({ data, show, handleClose, setModalShow }) {
+function Popup(props) {
 
   const [pokeRating, setPokeRating] = useReducer(reducer, {
-    id: data.id,
+    id: props.data.id,
     total: 1,
     score: -1,
   });
@@ -34,20 +37,21 @@ function Popup({ data, show, handleClose, setModalShow }) {
 
   return (
     <Modal
-      show={show}
+      show={props.show}
       size="xl"
       aria-labelledby="contained-modal-title-vcenter"
-      onHide={()=>handleClose(false,false)}
+      onHide={props.handleClose}
       backdrop="static"
+      className="pokepop"
       centered
     >
-      {data ? (
-        <Container style={{ backgroundColor: data.BColor }} fluid>
+      {props.data ? (
+        <Container style={{ backgroundColor: props.data.BColor }} fluid>
           <Row>
             <Col md="auto" className="m-1">
-              {data.Img ? (
+              {props.data.Img ? (
                 <img
-                  src={"/assets/img/pokemons/" + data.Img}
+                  src={"/assets/img/pokemons/" + props.data.Img}
                   style={{height: "100%", width: "20rem", objectFit: "contain" }} alt="Pokemon" 
                 />
               ) : (  <div></div> )}
@@ -56,26 +60,26 @@ function Popup({ data, show, handleClose, setModalShow }) {
               <Modal.Header closeButton>
                 <Modal.Title
                   id="contained-modal-title-vcenter"
-                  style={{ color: data.FColor }} 
+                  style={{ color: props.data.FColor }} 
                 >
                   <div className="d-flex justify-content-between ">
-                    <div >{data.Name} {data.id<99000 ?(<span className="text-muted">#{data.id}</span>):(<></>)} </div>
-                    <div className="ps-4" onClick={() => handleClose(true)}><FontAwesomeIcon icon={faEdit} /></div>
+                    <div >{props.data.Name} {props.data.id<99000 ?(<span className="text-muted">#{props.data.id}</span>):(<></>)} </div>
+                    <div className="ps-4" onClick={() => {props.handleClose(); props.actions.open({showNewModal:true,newModalValue : props.data}) }}><FontAwesomeIcon icon={faEdit} /></div>
                   </div>
                 </Modal.Title>
               </Modal.Header>
-              <Modal.Body style={{ color: data.FColor }}>
+              <Modal.Body style={{ color: props.data.FColor }}>
                 <h5>
-                  <PokeType list={data.Type} tooltipLevel={2}></PokeType>
+                  <PokeType list={props.data.Type} tooltipLevel={2}></PokeType>
                 </h5>
                 <h6>Açıklama</h6>
-                <p>{data.Desc}</p>
-                <Rating rating={pokeRating} pokeRate={pokeRate} id={data.id} showRate={showRate}></Rating>
+                <p>{props.data.Desc}</p>
+                <Rating rating={pokeRating} pokeRate={pokeRate} id={props.data.id} showRate={showRate}></Rating>
               </Modal.Body>
               <Modal.Footer className="justify-content-between">
-                <Evolution list={data.Prev} setModalShow={setModalShow} />
+                <Evolution list={props.data.Prev} setModalShow={props.setModalShow} />
                 <div style={{ width: "30%" }}></div>
-                <Evolution list={data.Next} setModalShow={setModalShow} />
+                <Evolution list={props.data.Next} setModalShow={props.setModalShow} />
               </Modal.Footer>
             </Col>
           </Row>
@@ -87,4 +91,13 @@ function Popup({ data, show, handleClose, setModalShow }) {
   );
 }
 
-export default Popup;
+//export default Popup;
+
+function mapDispatchToProps(dispatch) {
+  return {
+      actions: {
+          open: bindActionCreators(OpenNewAction, dispatch)
+      },
+  };
+}
+export default connect(null, mapDispatchToProps)(Popup);
