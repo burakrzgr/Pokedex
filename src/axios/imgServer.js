@@ -1,7 +1,7 @@
 import axios from "axios"
 
-const fetchImg = (name) => {return axios.get("http://localhost:3002/photos/"+name);}
-const postImg = (name,img) => {return axios.post("http://localhost:3002/"+name ,img);}
+const postImg = (formData) => {return axios.post("http://localhost:3003/upload",formData,{headers: {'content-type': 'multipart/form-data'}});}
+//const postImg = (name,img) => {return axios.post("http://localhost:3003/"+name ,img);}
 
 
-export {fetchImg,postImg};
+export {postImg};

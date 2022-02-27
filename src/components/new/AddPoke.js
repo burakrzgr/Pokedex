@@ -7,6 +7,7 @@ import $ from 'jquery';
 import FileUpload from "../misc/FileUpload";
 import TextAdder from "../misc/TextAdder";
 import { postPokemon } from '../../axios/pokeserver'
+import { postImg } from '../../axios/imgServer'
 
 function AddPoke({ show, handleClose }) {
 
@@ -46,23 +47,55 @@ function AddPoke({ show, handleClose }) {
     }
 
     const savePoke = () => {
+        var imgName = values.pokename.trim().toLowerCase().replace(/ /g, '') + findExtension(img);
         var poke = {
-            id : values.no,
-            Name: values.pokename,
-            Img :   values.pokename.toLowerCase().replace(/ /g,'') +'.png',
+            id: values.no.trim(),
+            Name: values.pokename.trim(),
+            Img: imgName,
             Type: types.arr,
-            Desc :values.desc,
-            BColor :bColor,
-            FColor :fColor,
+            Desc: values.desc.trim(),
+            BColor: bColor,
+            FColor: fColor,
             Prev: prev.arr,
-            Next : next.arr,
+            Next: next.arr,
             Ability: ability.arr,
             Rating: {
                 Score: 1,
                 Total: 1
             }
         };
-        postPokemon(poke).then((res) => {(console.log(res.status === 201 ? "Success" :res))});
+        postPokemon(poke).then(res => {res.status === 201 ? updatedEvent(poke,img,imgName) : failedEvent()});
+    }
+    function updatedEvent(poke,img,imgName){
+        fileUpload(img,imgName);
+    }  
+    function failedEvent(){
+        console.log("nooooo!")
+    }
+
+    const fileUpload = (file, name) => {
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', renameFile(file,name));
+            postImg(formData);//.then(res => { (console.log(res.status === 201 ? "Success" : res)) });
+            return true;
+        }
+        return false;
+    }
+
+
+    function renameFile(originalFile, newName) {
+        return new File([originalFile], newName, {
+            type: originalFile.type,
+            lastModified: originalFile.lastModified,
+        });
+    }
+
+    function findExtension(img){
+        if(img){
+            return img.name ? '.' + img.name.split('.').pop() :".png";
+        }
+        return ".png"; 
     }
 
     return (

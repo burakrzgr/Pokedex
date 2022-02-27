@@ -4,9 +4,7 @@ import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { Row, Col, Button, ButtonGroup } from "react-bootstrap";
 function Rating({ rating, pokeRate, id,  showRate }) {
 
-     useEffect(() => {
-          showRate(id);
-     }, [id]);
+     useEffect(() => showRate(id), [id]);
 
      return (
           <div>

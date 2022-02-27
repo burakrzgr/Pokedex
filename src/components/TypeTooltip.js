@@ -42,7 +42,7 @@ function TypeTooltip({ children, data, tooltipLevel }) {
                     </Row>
                     <Row className='pt-3'>
                         <Col className='p-3 pb-0 text-center' >
-                            <Button variant='outline-dark' className='w-50' onClick={() => { alert("begone man-thing") }} style={{ backgroundColor: '#fff2' }}>Detaylar</Button>
+                            <Button variant='outline-dark' className='w-50' onClick={() => { alert("we dont like you elf-thing smells sting-clean!") }} style={{ backgroundColor: '#fff2' }}>Detaylar</Button>
                         </Col>
                     </Row>
                 </Container>
