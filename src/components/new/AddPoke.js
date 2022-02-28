@@ -236,7 +236,7 @@ function AddPoke(props) {
                     </Row>
                 </Container>
             </Modal>
-            {props.newModalValue?<DeletePokeConfirmation show={showDelete} handleClose={setShowDelete} id={props.newModalValue.id} img={undefined} name={props.newModalValue.name}></DeletePokeConfirmation>:<></>}
+            {props.newModalValue?<DeletePokeConfirmation show={showDelete} handleClose={setShowDelete} id={props.newModalValue.id} img={undefined} name={props.newModalValue.Name}></DeletePokeConfirmation>:<></>}
         </>
     );
 }
