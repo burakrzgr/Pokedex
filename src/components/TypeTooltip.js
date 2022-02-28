@@ -20,7 +20,7 @@ function TypeTooltip({ children, data, tooltipLevel }) {
                     <Row className='pt-3'>
                         <Col md="auto">
                             <h5>Super Effective (x2)</h5>
-                            {data.SE && data.SE.length ? <PokeType list={data.SE} tooltipLevel={tooltipLevel-1}></PokeType> : <h5 className='text-muted ps-2' ><i>Not Exist</i></h5>}
+                            {data.SE && data.SE.length ? <PokeType list={data.SE} tooltipLevel={tooltipLevel-1}></PokeType> : <h5 className='text-muted ps-2 NotExistText' ><i>Not Exist</i></h5>}
                             
                         </Col>
                     </Row>
@@ -28,7 +28,7 @@ function TypeTooltip({ children, data, tooltipLevel }) {
                         <Col md="auto">
                             <h5>Not Very Effective (x0.5)</h5>
                             <div>
-                                {data.NE && data.NE.length? <PokeType list={data.NE} tooltipLevel={tooltipLevel-1}></PokeType> : <h5 className='text-muted ps-2' ><i>Not Exist</i></h5>}
+                                {data.NE && data.NE.length? <PokeType list={data.NE} tooltipLevel={tooltipLevel-1}></PokeType> : <h5 className='text-muted ps-2 NotExistText' ><i>Not Exist</i></h5>}
                             </div>
                         </Col>
                     </Row>
@@ -36,7 +36,7 @@ function TypeTooltip({ children, data, tooltipLevel }) {
                         <Col md="auto">
                             <h5>Immune (x0)</h5>
                             <div>
-                                {data.Imm && data.Imm.length ? <PokeType list={data.Imm} tooltipLevel={tooltipLevel-1}></PokeType> : <h5 className='text-muted ps-2' ><i>Not Exist</i></h5>}
+                                {data.Imm && data.Imm.length ? <PokeType list={data.Imm} tooltipLevel={tooltipLevel-1}></PokeType> : <h5 className='text-muted ps-2 NotExistText'><i>Not Exist</i></h5>}
                             </div>
                         </Col>
                     </Row>

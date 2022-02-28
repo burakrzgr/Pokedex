@@ -5,7 +5,7 @@ import ColorPicker from "../misc/ColorPicker";
 import TypeControl from "./TypeControl";
 import FileUpload from "../misc/FileUpload";
 import TextAdder from "../misc/TextAdder";
-import { postPokemon, putPokemon } from '../../axios/pokeserver'
+import { postPokemon, putPokemon, deletePokemon } from '../../axios/pokeserver'
 import { postImg } from '../../axios/imgServer'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -82,9 +82,6 @@ function AddPoke(props) {
                 Total: 1
             }
         };
-        console.log("entelejansiye",isUpdate);
-        console.log("entelejansiye",props.newModalValue.id);
-        console.log("entelejansiye",poke);
 
         if(isUpdate)
             putPokemon(props.newModalValue.id,poke).then(res => {res.status === 200 ? updateEvent(poke,img,imgName)  : failedEvent(res)});
@@ -93,7 +90,8 @@ function AddPoke(props) {
             
     }
 
-    const deletePoke = () => {
+    const deletePoke = (val) => {
+        deletePokemon(props.newModalValue.id).then(res => {res.status === 200 ? removeImg(props.newModalValue.Img) : failedEvent(res)});
     }
     function updateEvent(poke,img,imgName){
         if(img.changed){
@@ -104,6 +102,9 @@ function AddPoke(props) {
         if(img.changed){
             fileUpload(img.img,imgName);
         }
+    }  
+    function removeImg(img){
+
     }  
     function failedEvent(res){
         console.log("Update/insert Error:",res)

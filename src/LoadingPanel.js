@@ -8,7 +8,7 @@ const LoadingPanel = (props) => {
   useEffect(() => {
     setTimeout(() => {
       fetchAllPokemon().then((rs) => {
-        var pokeindex = rs.data.filter((x)=>{return x.id < 99000;} );
+        var pokeindex = rs.data.filter((x)=>{return x.id < 99000;} ).sort((x,y) => (x.id - y.id));
         props.LoadAction(pokeindex);
         props.loaded();
       }); 
