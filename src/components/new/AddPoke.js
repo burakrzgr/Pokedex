@@ -5,7 +5,7 @@ import ColorPicker from "../misc/ColorPicker";
 import TypeControl from "./TypeControl";
 import FileUpload from "../misc/FileUpload";
 import TextAdder from "../misc/TextAdder";
-import { postPokemon } from '../../axios/pokeserver'
+import { postPokemon, putPokemon } from '../../axios/pokeserver'
 import { postImg } from '../../axios/imgServer'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -25,7 +25,6 @@ function AddPoke(props) {
 
     useEffect(() => {
         jqr(".pokeAdd").attr("tabindex", null); 
-        console.log("www");
         if(props.showNewModal && props.newModalValue){
             setPrev({ arr:  props.newModalValue.Prev });
             setNext({ arr:   props.newModalValue.Next });
@@ -65,7 +64,7 @@ function AddPoke(props) {
         setValues({ no: values.no, pokename: values.pokename, desc: e.target.value });
     }
 
-    const savePoke = () => {
+    const savePoke = (isUpdate) => {
         var imgName = values.pokename.trim().toLowerCase().replace(/ /g, '') + findExtension(img);
         var poke = {
             id: values.no.trim(),
@@ -83,15 +82,31 @@ function AddPoke(props) {
                 Total: 1
             }
         };
-        postPokemon(poke).then(res => {res.status === 201 ? updatedEvent(poke,img,imgName) : failedEvent()});
+        console.log("entelejansiye",isUpdate);
+        console.log("entelejansiye",props.newModalValue.id);
+        console.log("entelejansiye",poke);
+
+        if(isUpdate)
+            putPokemon(props.newModalValue.id,poke).then(res => {res.status === 200 ? updateEvent(poke,img,imgName)  : failedEvent(res)});
+        else
+            postPokemon(poke).then(res => {res.status === 201 ? savedEvent(poke,img,imgName) : failedEvent(res)});
+            
     }
-    function updatedEvent(poke,img,imgName){
+
+    const deletePoke = () => {
+    }
+    function updateEvent(poke,img,imgName){
+        if(img.changed){
+            fileUpload(img.img,imgName);
+        }
+    } 
+    function savedEvent(poke,img,imgName){
         if(img.changed){
             fileUpload(img.img,imgName);
         }
     }  
-    function failedEvent(){
-        console.log("nooooo!")
+    function failedEvent(res){
+        console.log("Update/insert Error:",res)
     }
 
     const fileUpload = (file, name) => {
@@ -204,8 +219,9 @@ function AddPoke(props) {
                             </Form.Group>
                         </Modal.Body>
                         <Modal.Footer className="justify-content-between">
-                            <div></div>
-                            <Button variant="primary" onClick={() => savePoke()}>Add Pokemon</Button>
+                        {props.newModalValue?<Button variant="danger" onClick={() => deletePoke(false)}>Delete Pokemon</Button>:<div></div>}
+                            {props.newModalValue?<Button variant="success" onClick={() => savePoke(true)}>Update [{props.newModalValue.Name + " #"+props.newModalValue.id}]</Button>
+                            :<Button variant="primary" onClick={() => savePoke(false)}>Add Pokemon</Button>}
                         </Modal.Footer>
                     </Col>
                 </Row>
