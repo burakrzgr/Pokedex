@@ -151,6 +151,7 @@ function AddPoke(props) {
                 onHide={() => props.actions.open({ showNewModal: false, newModalValue: undefined })}
                 backdrop="static"
                 className="pokeAdd"
+                style={{filter : showDelete ? 'grayscale(70%) blur(4px)':''}}
                 centered
             >
                 <Container style={{ backgroundColor: "#FFF" }} fluid>
