@@ -7,7 +7,7 @@ import PokeType from "./PokeType";
 import { fetchPokemon, patchPokemon } from '../axios/pokeserver'
 import Rating from "./Rating";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { openNewPoke as OpenNewAction} from "../actions/actions";
@@ -65,6 +65,7 @@ function Popup(props) {
                   <div className="d-flex justify-content-between ">
                     <div >{props.data.Name} {props.data.id<99000 ?(<span className="text-muted">#{props.data.id}</span>):(<></>)} </div>
                     <div className="ps-4" onClick={() => {props.handleClose(); props.actions.open({showNewModal:true,newModalValue : props.data}) }}><FontAwesomeIcon icon={faEdit} /></div>
+                    <div className="ps-2" onClick={() => {props.handleClose(); props.actions.open({showNewModal:true,newModalValue : props.data}) }}><FontAwesomeIcon icon={faTrashCan} /></div>
                   </div>
                 </Modal.Title>
               </Modal.Header>
