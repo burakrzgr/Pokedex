@@ -157,7 +157,7 @@ export const types = [
         "Style": {
             "Header_Bg": "#ce663b",
             "Header_Fg": "#000000",
-            "Detail_Bg": "#ef875c",
+            "Detail_Bg": "#ffa77c",
             "Detail_Fg": "#000000"
         }
     },

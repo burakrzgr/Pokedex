@@ -7,9 +7,10 @@ import FileUpload from "../misc/FileUpload";
 import TextAdder from "../misc/TextAdder";
 import { postPokemon, putPokemon, deletePokemon } from '../../axios/pokeserver'
 import { postImg } from '../../axios/imgServer'
+import { fetchAllPokemon } from "../../axios/pokeserver";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {openNewPoke as OpenNewAction} from "../../actions/actions";
+import {openNewPoke as OpenNewAction, loadPoke as LoadAction} from "../../actions/actions";
 import jqr from 'jquery';
 
 function AddPoke(props) {
@@ -32,7 +33,7 @@ function AddPoke(props) {
             setTypes({ arr:  props.newModalValue.Type });
             setBColor( props.newModalValue.BColor);
             setFColor( props.newModalValue.FColor); 
-            setValues({ no: props.newModalValue.id, pokename: props.newModalValue.Name, desc: props.newModalValue.Desc });
+            setValues({ no: String(props.newModalValue.id), pokename: props.newModalValue.Name, desc: props.newModalValue.Desc });
             setImg({changed:false,img:"/assets/img/pokemons/" + props.newModalValue.Img});
         }
         else
@@ -66,8 +67,9 @@ function AddPoke(props) {
 
     const savePoke = (isUpdate) => {
         var imgName = values.pokename.trim().toLowerCase().replace(/ /g, '') + findExtension(img);
+
         var poke = {
-            id: values.no.trim(),
+            id: parseInt(values.no.trim()),
             Name: values.pokename.trim(),
             Img: imgName,
             Type: types.arr,
@@ -84,24 +86,29 @@ function AddPoke(props) {
         };
 
         if(isUpdate)
-            putPokemon(props.newModalValue.id,poke).then(res => {res.status === 200 ? updateEvent(poke,img,imgName)  : failedEvent(res)});
+            putPokemon(props.newModalValue.id,poke).then(res => {res.status === 200 ? savedEvent(true,poke,img,imgName)  : failedEvent(res)});
         else
-            postPokemon(poke).then(res => {res.status === 201 ? savedEvent(poke,img,imgName) : failedEvent(res)});
-            
+            postPokemon(poke).then(res => {res.status === 201 ? savedEvent(false,poke,img,imgName) : failedEvent(res)});
     }
 
     const deletePoke = (val) => {
         deletePokemon(props.newModalValue.id).then(res => {res.status === 200 ? removeImg(props.newModalValue.Img) : failedEvent(res)});
     }
-    function updateEvent(poke,img,imgName){
+
+    function savedEvent(isUpdate,poke,img,imgName){
         if(img.changed){
-            fileUpload(img.img,imgName);
+            try{
+                fileUpload(img.img,imgName);
+            }
+            catch(e){
+                console.log("Upload da hata. Muhtemel cors hatası!")
+            }
         }
-    } 
-    function savedEvent(poke,img,imgName){
-        if(img.changed){
-            fileUpload(img.img,imgName);
-        }
+        fetchAllPokemon().then((rs) => {
+            var pokeindex = rs.data.filter((x)=>{return x.id < 99000;} ).sort((x,y) => (x.id - y.id));
+            props.actions.reload(pokeindex);
+            props.actions.open({showNewModal:false,newModalValue : undefined});
+        }); 
     }  
     function removeImg(img){
 
@@ -114,7 +121,7 @@ function AddPoke(props) {
         if (file) {
             const formData = new FormData();
             formData.append('file', renameFile(file,name));
-            postImg(formData);//.then(res => { (console.log(res.status === 201 ? "Success" : res)) });
+            postImg(formData).catch(e => console.log("Consumed."));//.then(res => { (console.log(res.status === 201 ? "Success" : res)) });
             return true;
         }
         return false;
@@ -235,7 +242,8 @@ function AddPoke(props) {
 function mapDispatchToProps(dispatch) {
     return {
         actions: {
-            open: bindActionCreators(OpenNewAction, dispatch)
+            open: bindActionCreators(OpenNewAction, dispatch),
+            reload : bindActionCreators(LoadAction , dispatch)
         },
     };
 }
