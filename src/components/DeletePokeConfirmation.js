@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Modal, Container, Button, ButtonGroup } from "react-bootstrap";
 import { deletePokemon, fetchAllPokemon } from '../axios/pokeserver'
 import { openNewPoke as OpenNewAction, loadPoke as LoadAction } from "../actions/actions";
@@ -8,6 +9,16 @@ function DeletePokeConfirmation(props) {
     const deletePoke = () => {
         deletePokemon(props.id).then(res => { res.status === 200 ? removeDoneEvent(props.img) : failedEvent(res) });
     }
+        
+    useEffect(() => {
+        setTimeout(() => {
+            if(props.counter > 0)
+                props.setCounter(prv => prv - 1);
+        }, 1000);
+        if(!props.show){
+            props.setCounter(0);
+        }
+    },[props.counter,props.show]);  
 
     function removeDoneEvent(img) {
         fetchAllPokemon().then((rs) => {
@@ -32,15 +43,15 @@ function DeletePokeConfirmation(props) {
             <Modal.Header >
                 <Modal.Title>Confirmation</Modal.Title>
             </Modal.Header>
-            <Modal.Body style={{ height: '6rem' }}>
+            <Modal.Body style={{ height: '5rem' }}>
                 <Container fluid>
                     <div>Delete {props.name}!</div>
                 </Container>
             </Modal.Body>
             <Modal.Footer className="justify-content-between">
                 <ButtonGroup aria-label="confirmation-group" className="w-100">
-                    <Button variant="outline-secondary" onClick={() => props.handleClose(false)} >Cancel</Button>
-                    <Button variant="danger" onClick={() => deletePoke()} >Delete</Button>
+                    <Button variant="outline-secondary" className="w-50" onClick={() => {props.handleClose(false)}}>Cancel</Button>
+                    <Button variant="danger" className="w-50" disabled={(props.counter > 0)} onClick={() => deletePoke()} >Delete {props.counter > 0 ? '[' + props.counter + ']':''} </Button>
                 </ButtonGroup>
             </Modal.Footer>
             </div>

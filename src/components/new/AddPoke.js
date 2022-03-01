@@ -25,7 +25,7 @@ function AddPoke(props) {
     const [next, setNext] = React.useState({ arr: [] });
     const [ability, setAbility] = React.useState({ arr: [] });
     const [showDelete, setShowDelete] = React.useState(false);
-
+    const [counter, setCounter] = React.useState(9);
     useEffect(() => {
         jqr(".pokeAdd").attr("tabindex", null);
         if (props.showNewModal && props.newModalValue) {
@@ -94,6 +94,7 @@ function AddPoke(props) {
     }
 
     const deletePoke = (val) => {
+        setCounter(4);
         setShowDelete(true);
     }
 
@@ -151,7 +152,7 @@ function AddPoke(props) {
                 onHide={() => props.actions.open({ showNewModal: false, newModalValue: undefined })}
                 backdrop="static"
                 className="pokeAdd"
-                style={{filter : showDelete ? 'grayscale(70%) blur(4px)':''}}
+                style={{filter : showDelete ? 'grayscale(80%) blur(4px)':''}}
                 centered
             >
                 <Container style={{ backgroundColor: "#FFF" }} fluid>
@@ -237,7 +238,7 @@ function AddPoke(props) {
                     </Row>
                 </Container>
             </Modal>
-            {props.newModalValue?<DeletePokeConfirmation show={showDelete} handleClose={setShowDelete} id={props.newModalValue.id} img={undefined} name={props.newModalValue.Name}></DeletePokeConfirmation>:<></>}
+            {props.newModalValue?<DeletePokeConfirmation show={showDelete} handleClose={setShowDelete} id={props.newModalValue.id} img={undefined} name={props.newModalValue.Name} counter={counter} setCounter={setCounter}></DeletePokeConfirmation>:<></>}
         </>
     );
 }

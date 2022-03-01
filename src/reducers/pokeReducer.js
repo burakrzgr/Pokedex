@@ -2,7 +2,6 @@ import initalState from "../redux/initalState";
 import * as actionTypes from "../actions/actionTypes";
 
 export default function pokeReducer(state = initalState, action) {
-  var newTodos;
   switch (action.type) 
   {
     //console.log(actions);
