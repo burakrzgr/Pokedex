@@ -231,8 +231,8 @@ function AddPoke(props) {
                             </Modal.Body>
                             <Modal.Footer className="justify-content-between">
                                 {props.newModalValue ? <Button variant="danger" onClick={() => deletePoke(false)}>Delete Pokemon</Button> : <div></div>}
-                                {props.newModalValue ? <Button variant="success" onClick={() => savePoke(true)}>Update [{props.newModalValue.Name + " #" + props.newModalValue.id}]</Button>
-                                    : <Button variant="primary" onClick={() => savePoke(false)}>Add Pokemon</Button>}
+                                {props.newModalValue ? <Button variant="success" onClick={() => savePoke(true)} disabled={!parseInt(values.no) || parseInt(values.no)<0}>Update [{props.newModalValue.Name + " #" + props.newModalValue.id}]</Button>
+                                    : <Button variant="primary" onClick={() => savePoke(false)} disabled={!parseInt(values.no) || parseInt(values.no)<0}>Add Pokemon</Button>}
                             </Modal.Footer>
                         </Col>
                     </Row>
