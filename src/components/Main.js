@@ -5,7 +5,7 @@ import Popup from "./Popup";
 import AddPoke from "./new/AddPoke";
 import NewCard from "./new/NewCard";
 import { connect } from "react-redux";
-
+// test
 class Main extends Component {
 
   constructor(props) {
