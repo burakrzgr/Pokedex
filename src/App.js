@@ -1,34 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Search from './components/Seach';
 import Main from './components/Main';
 import LoadingPanel from './LoadingPanel'
-
+import LoginPanel from './LoginPanel'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 class App extends React.Component {
-
-  state = { showNewPoke: false, loading : true }
-  setShowNewPoke(v) {
-    this.setState({ ...this.state,showNewPoke: v });
-  }
-  loaded() {
-    this.setState({ ...this.state,loading: false });
-  }
 
   render() {
     return (
       <div className="App">
+        <LoginPanel></LoginPanel>
         <header className="App-header">
-          <Search addPokeEvent={(v) => this.setShowNewPoke(v)}></Search>
-          {this.state.loading ?
-            <LoadingPanel isLoading={this.state.loading} loaded={() => this.loaded()}/> :
-            <Main addPokeEvent={(v) => this.setShowNewPoke(v)} showNewPoke={this.state.showNewPoke} ></Main>
-          }
+          <BrowserRouter>
+            <Routes>
+              <Route path="pokemons" element={<MainComp></MainComp>} />
+              <Route path="types" element={<div> Great!</div>} />
+              <Route path="/" element={<MainComp></MainComp>} />
+            </Routes>
+          </BrowserRouter>
         </header>
       </div>
     );
   }
 }
+function MainComp() {
+  const [state, setState] = useState({ showNewPoke: false, loading: true })
+  function setShowNewPoke(v) {
+    setState({ ...state, showNewPoke: v });
+  };
+  function loaded() {
+    setState({ ...state, loading: false });
+  };
+  return (
+    <>
+      <Search addPokeEvent={(v) => setShowNewPoke(v)}></Search>
+      {state.loading ?
+        <LoadingPanel isLoading={state.loading} loaded={() => loaded()} /> :
+        <Main addPokeEvent={(v) => setShowNewPoke(v)} showNewPoke={state.showNewPoke} ></Main>
+      }
+    </>);
+};
 
 export default App;
