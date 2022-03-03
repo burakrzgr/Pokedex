@@ -1,0 +1,12 @@
+.Toastify__toast-theme--light {
+    background-color: #b6f0a6;
+    color: #005e0f;
+    font-weight: 600;
+    font-size: large;
+    text-align: left;
+  }
+  .Toastify__toast-theme--colored.Toastify__toast--error {
+    font-weight: 600;
+    font-size: large;
+    text-align: left;
+  }

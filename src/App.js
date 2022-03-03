@@ -28,7 +28,6 @@ class App extends React.Component {
 }
 
 const PokeRegion =() => {
-  //let { path, url } = useRouteMatch();console.log(path);console.log(url);
   var { reg } = useParams();
   return (
     <>

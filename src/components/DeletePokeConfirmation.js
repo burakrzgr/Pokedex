@@ -26,9 +26,11 @@ function DeletePokeConfirmation(props) {
             props.actions.reload(pokeindex);
             props.actions.open({ showNewModal: false, newModalValue: undefined });
         });
+        props.notifySuccess("deleted");
     }
     function failedEvent(res) {
-        console.log("Update/insert Error:", res)
+        props.notifySuccess("delete",res);
+        //console.log("Update/insert Error:", res)
     }
     return (
         <Modal

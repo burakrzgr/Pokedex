@@ -33,7 +33,7 @@ class Main extends Component {
                         return (
                             <PokeCard key={key} data={data} setModalShow={() => {
                                 setData(data)
-                            }}/> //bcolor={data.BColor} fcolor={data.FColor} img={data.Img} name={data.Name} desc={data.Desc} type={data.Type} />
+                            }}/> 
                         );
                     })}
                 </Row>

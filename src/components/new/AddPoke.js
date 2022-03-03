@@ -1,6 +1,5 @@
 import { Modal, Container, Row, Col, Form, Button, Stack } from "react-bootstrap";
 import React, { useEffect } from "react";
-import "../../button.css";
 import ColorPicker from "../misc/ColorPicker";
 import TypeControl from "./TypeControl";
 import FileUpload from "../misc/FileUpload";
@@ -13,6 +12,10 @@ import { bindActionCreators } from "redux";
 import { openNewPoke as OpenNewAction, loadPoke as LoadAction } from "../../actions/actions";
 import jqr from 'jquery';
 import DeletePokeConfirmation from "../DeletePokeConfirmation";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "../../button.css";
+import "../../css/toastify-custom.css"
 
 function AddPoke(props) {
 
@@ -88,9 +91,11 @@ function AddPoke(props) {
         };
 
         if (isUpdate)
-            putPokemon(props.newModalValue.id, poke).then(res => { res.status === 200 ? savedEvent(true, poke, img, imgName) : failedEvent(res) });
+            putPokemon(props.newModalValue.id, poke).then(res => { res.status === 200 ? savedEvent(true, poke, img, imgName) : failedEvent(res) }).catch(ex =>  notifyFailure("update","#404"));
         else
-            postPokemon(poke).then(res => { res.status === 201 ? savedEvent(false, poke, img, imgName) : failedEvent(res) });
+            postPokemon(poke).then(res => { res.status === 201 ? savedEvent(false, poke, img, imgName) : failedEvent(res) }).catch(ex =>  notifyFailure("update","#404"));
+
+
     }
 
     const deletePoke = (val) => {
@@ -106,16 +111,18 @@ function AddPoke(props) {
             catch (e) {
                 console.log("Upload da hata. Muhtemel cors hatası!")
             }
+           
         }
         fetchAllPokemon().then((rs) => {
             var pokeindex = rs.data.filter((x) => { return x.id < 99000; }).sort((x, y) => (x.id - y.id));
             props.actions.reload(pokeindex);
             props.actions.open({ showNewModal: false, newModalValue: undefined });
-        });
+        }); 
+        notifySuccess(isUpdate ? "updated" : "saved");
     }
 
     function failedEvent(res) {
-        console.log("Update/insert Error:", res)
+        notifyFailure("Update", res);
     }
 
     const fileUpload = (file, name) => {
@@ -127,7 +134,6 @@ function AddPoke(props) {
         }
         return false;
     }
-
 
     function renameFile(originalFile, newName) {
         return new File([originalFile], newName, {
@@ -143,6 +149,9 @@ function AddPoke(props) {
         return ".png";
     }
 
+    const notifySuccess = (operation) => toast('Succesfully ' + operation + '!');
+    const notifyFailure = (operation, reason) => toast.error("Failed to " + operation + "!" + " " + reason,{theme:"colored"});
+
     return (
         <>
             <Modal
@@ -152,7 +161,7 @@ function AddPoke(props) {
                 onHide={() => props.actions.open({ showNewModal: false, newModalValue: undefined })}
                 backdrop="static"
                 className="pokeAdd"
-                style={{filter : showDelete ? 'grayscale(80%) blur(4px)':''}}
+                style={{ filter: showDelete ? 'grayscale(80%) blur(4px)' : '' }}
                 centered
             >
                 <Container style={{ backgroundColor: "#FFF" }} fluid>
@@ -231,14 +240,37 @@ function AddPoke(props) {
                             </Modal.Body>
                             <Modal.Footer className="justify-content-between">
                                 {props.newModalValue ? <Button variant="danger" onClick={() => deletePoke(false)}>Delete Pokemon</Button> : <div></div>}
-                                {props.newModalValue ? <Button variant="success" onClick={() => savePoke(true)} disabled={!parseInt(values.no) || parseInt(values.no)<0}>Update [{props.newModalValue.Name + " #" + props.newModalValue.id}]</Button>
-                                    : <Button variant="primary" onClick={() => savePoke(false)} disabled={!parseInt(values.no) || parseInt(values.no)<0}>Add Pokemon</Button>}
+                                {props.newModalValue ? <Button variant="success" onClick={() => savePoke(true)} disabled={!parseInt(values.no) || parseInt(values.no) < 0}>Update [{props.newModalValue.Name + " #" + props.newModalValue.id}]</Button>
+                                    : <Button variant="primary" onClick={() => savePoke(false)} disabled={!parseInt(values.no) || parseInt(values.no) < 0}>Add Pokemon</Button>}
                             </Modal.Footer>
                         </Col>
                     </Row>
                 </Container>
             </Modal>
-            {props.newModalValue?<DeletePokeConfirmation show={showDelete} handleClose={setShowDelete} id={props.newModalValue.id} img={undefined} name={props.newModalValue.Name} counter={counter} setCounter={setCounter}></DeletePokeConfirmation>:<></>}
+            {props.newModalValue ?
+                <DeletePokeConfirmation
+                    show={showDelete}
+                    handleClose={setShowDelete}
+                    id={props.newModalValue.id}
+                    img={undefined}
+                    name={props.newModalValue.Name}
+                    counter={counter}
+                    setCounter={setCounter}
+                    notifySuccess={notifySuccess}
+                    notifyFailure={notifyFailure}
+                >
+                </DeletePokeConfirmation> : <></>}
+                <ToastContainer
+                    position="top-right"
+                    autoClose={20000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
         </>
     );
 }
