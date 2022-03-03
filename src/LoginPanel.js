@@ -19,6 +19,8 @@ function LoginPanel() {
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/region/maps">Maps</NavDropdown.Item>
                         </NavDropdown>
+                        <Nav.Item className="ms-3 me-3 seperator" ></Nav.Item>
+                        <Nav.Link href="/pazar">Canlı Poke Pazarı</Nav.Link>
                     </Nav>
                     <Nav>
                         <Nav.Link href="login">Login</Nav.Link>
