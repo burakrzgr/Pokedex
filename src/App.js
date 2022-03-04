@@ -5,20 +5,27 @@ import Search from "./components/Seach";
 import Main from "./components/Main";
 import LoadingPanel from "./LoadingPanel";
 import LoginPanel from "./LoginPanel";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useParams, useRouteMatch, Switch } from "react-router-dom";
 
 class App extends React.Component {
   render() {
     return (
+
       <div className="App">
         <LoginPanel></LoginPanel>
         <header className="App-header">
           <BrowserRouter>
             <Routes>
-              <Route path="/pokemons" element={<MainComp></MainComp>} />
-              <Route path="/types" element={<div> Great!</div>} />
-              <Route path="/region/:reg" element={<PokeRegion />} />
-              <Route path="/" element={<MainComp></MainComp>} />
+              <Route path="/" >
+                <Route index element={<MainComp></MainComp>} />
+                <Route path="pokemons" element={<MainComp></MainComp>} />
+                <Route path="types" element={<div> Great!</div>} />
+                <Route path="region" >
+                    <Route index element={<p>Bölge</p>} ></Route>
+                    <Route path="new" element={<h3>Please select a topic.</h3>} />
+                    <Route path=":regionId" element={<PokeRegion />}/>  
+                </Route> 
+              </Route>
             </Routes>
           </BrowserRouter>
         </header>
@@ -27,14 +34,17 @@ class App extends React.Component {
   }
 }
 
-const PokeRegion =() => {
-  var { reg } = useParams();
-  return (
+
+const PokeRegion = () => {
+  let { regionId } = useParams();
+  return(
     <>
-    <div>Map of the Region! {reg}</div>
+      REgion :{regionId}
     </>
   );
 }
+
+
 function MainComp() {
   const [state, setState] = useState({ showNewPoke: false, loading: true });
   function setShowNewPoke(v) {

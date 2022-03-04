@@ -6,13 +6,15 @@ import { Provider } from "react-redux";
 import configStore from "./redux/configStore";
 import './index.css';
 import './index.scss'
+import { BrowserRouter } from "react-router-dom";
+
 
 const store = configStore();
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+        <App />    
     </React.StrictMode>
   </Provider >,
   document.getElementById('root')
