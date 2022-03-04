@@ -1,6 +1,7 @@
 import MainComp from './MainComp'
-import { BrowserRouter, Route, Routes} from "react-router-dom";
 import PokeRegion from './components/PokeRegion'
+import PokeTypes from './components/PokeTypes';
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 
 function ConfigureRouter() {
     return (
@@ -9,7 +10,7 @@ function ConfigureRouter() {
                 <Route path="/" >
                     <Route index element={<MainComp></MainComp>} />
                     <Route path="pokemons" element={<MainComp></MainComp>} />
-                    <Route path="types" element={<div> Great!</div>} />
+                    <Route path="types" element={<PokeTypes></PokeTypes>} />
                     <Route path="region" >
                         <Route index element={<p>Bölge</p>} ></Route>
                         <Route path="new" element={<h3>Please select a topic.</h3>} />
