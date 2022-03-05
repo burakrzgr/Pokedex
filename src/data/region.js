@@ -3,7 +3,7 @@ const regions = [
         id:1,
         Name : "kanto",
         ProperName :"Kanto",
-        Image :"kanto_map.jpg",
+        Image :"kanto_map.png",
         Proffesors :["Professor Oak","Professor Cerise"],
         Starters :["Bulbasaur","Charmander","Squirtle","Pikachu","Eevee"],
         Vilains :["Team Rocket"]
@@ -12,7 +12,7 @@ const regions = [
         id:2,
         Name : "johto",
         ProperName :"Johto",
-        Image :"johto_map.jpg",
+        Image :"johto_map.png",
         Proffesors :["Professor Elm"],
         Starters :["Chikorita", "Cyndaquil", "Totodile"],
         Vilains :["Team Rocket"]
@@ -21,7 +21,7 @@ const regions = [
         id:3,
         Name : "hoenn",
         ProperName :"Hoenn",
-        Image :"hoenn_map.jpg",
+        Image :"hoenn_map.png",
         Proffesors :["Professor Birch"],
         Starters :["Treecko", "Torchic", "Mudkip"],
         Vilains :["Team AquaSEA","Team Magma"]
