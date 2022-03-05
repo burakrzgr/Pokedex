@@ -224,10 +224,10 @@ const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#ce76fb",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#32ef879c",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#086805",
+            "Header_Fg": "#dffcd3",
+            "Detail_Bg": "#7efc99",
+            "Detail_Fg": "#012500"
         }
     },
     {
@@ -247,10 +247,10 @@ const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#faf68c",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#fbf8ac",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#7c8128",
+            "Header_Fg": "#fefccb",
+            "Detail_Bg": "#e7e6c4",
+            "Detail_Fg": "#1e1e00"
         }
     },
     {
@@ -313,10 +313,10 @@ const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#ce76fb",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#32ef879c",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#56107a",
+            "Header_Fg": "#20c055",
+            "Detail_Bg": "#8ce3b0",
+            "Detail_Fg": "#260058"
         }
     },
     {
@@ -336,10 +336,10 @@ const types = [
             "Dark"
         ],
         "Style": {
-            "Header_Bg": "#f688c8",
-            "Header_Fg": "#ffffff",
+            "Header_Bg": "#fc6fc1",
+            "Header_Fg": "#ffd426",
             "Detail_Bg": "#c9c8d9",
-            "Detail_Fg": "#000000"
+            "Detail_Fg": "#81014b"
         }
     },
     {
@@ -359,10 +359,10 @@ const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#faf68c",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#fbf8ac",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#494949",
+            "Header_Fg": "#b6b60b",
+            "Detail_Bg": "#eeeedc",
+            "Detail_Fg": "#545400"
         }
     },
     {
@@ -385,10 +385,10 @@ const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#ce76fb",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#32ef879c",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#657782",
+            "Header_Fg": "#cdebfe",
+            "Detail_Bg": "#e3d3dc",
+            "Detail_Fg": "#070815"
         }
     },
     {
