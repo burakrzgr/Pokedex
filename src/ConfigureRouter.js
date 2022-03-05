@@ -1,6 +1,6 @@
 import MainComp from './MainComp'
 import PokeRegion from './components/PokeRegion'
-import PokeTypes from './components/PokeTypes';
+import PokeTypes from './components/types/PokeTypes';
 import { BrowserRouter, Route, Routes} from "react-router-dom";
 
 function ConfigureRouter() {

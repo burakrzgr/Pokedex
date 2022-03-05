@@ -1,6 +1,6 @@
 import React from "react";
 import TypeTooltip from "./TypeTooltip";
-import {types} from "../data/types";
+import types from "../data/types";
 
 function PokeType({ list, tooltipLevel }) {
      

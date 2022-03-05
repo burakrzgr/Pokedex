@@ -1,4 +1,4 @@
-export const types = [
+const types = [
     {
         "id": 1,
         "Name": "Bug",
@@ -16,10 +16,10 @@ export const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#faf68c",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#fbf8ac",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#3d5a18",
+            "Header_Fg": "#ced8c0",
+            "Detail_Bg": "#cae8a1",
+            "Detail_Fg": "#2a4603"
         }
     },
     {
@@ -57,10 +57,10 @@ export const types = [
             "Fairy"
         ],
         "Style": {
-            "Header_Bg": "#de764b",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#ef875c",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#1a0ba2",
+            "Header_Fg": "#fc6f38",
+            "Detail_Bg": "#f1d1c7",
+            "Detail_Fg": "#0b0071"
         }
     },
     {
@@ -78,9 +78,9 @@ export const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#de764b",
+            "Header_Bg": "#fff000",
             "Header_Fg": "#000000",
-            "Detail_Bg": "#ef875c",
+            "Detail_Bg": "#fffbb8",
             "Detail_Fg": "#000000"
         }
     },
@@ -104,9 +104,9 @@ export const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#ce76fb",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#32ef879c",
+            "Header_Bg": "#7c436b",
+            "Header_Fg": "#ffffff",
+            "Detail_Bg": "#eab8e4",
             "Detail_Fg": "#000000"
         }
     },
@@ -155,8 +155,8 @@ export const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#ce663b",
-            "Header_Fg": "#000000",
+            "Header_Bg": "#e42e00",
+            "Header_Fg": "#ffefac",
             "Detail_Bg": "#ffa77c",
             "Detail_Fg": "#000000"
         }
@@ -177,10 +177,10 @@ export const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#e8a14f",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#f9c37f",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#3974a1",
+            "Header_Fg": "#dbe5ec",
+            "Detail_Bg": "#c2e2f9",
+            "Detail_Fg": "#0c151c"
         }
     },
     {
@@ -198,10 +198,10 @@ export const types = [
             "Normal"
         ],
         "Style": {
-            "Header_Bg": "#de764b",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#ef875c",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#3800d5",
+            "Header_Fg": "#8bffdc",
+            "Detail_Bg": "#ba91ee",
+            "Detail_Fg": "#025f48"
         }
     },
     {
@@ -269,10 +269,10 @@ export const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#ce76fb",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#32ef879c",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#10b6e7",
+            "Header_Fg": "#d8dfef",
+            "Detail_Bg": "#72abbf",
+            "Detail_Fg": "#ffffff"
         }
     },
     {
@@ -287,9 +287,9 @@ export const types = [
             "Ghost"
         ],
         "Style": {
-            "Header_Bg": "#c03028",
+            "Header_Bg": "#565656",
             "Header_Fg": "#ffffff",
-            "Detail_Bg": "#e68883",
+            "Detail_Bg": "#cecece",
             "Detail_Fg": "#000000"
         }
     },
@@ -407,10 +407,12 @@ export const types = [
         ],
         "Imm": [],
         "Style": {
-            "Header_Bg": "#ce76fb",
-            "Header_Fg": "#000000",
-            "Detail_Bg": "#2ef879",
-            "Detail_Fg": "#000000"
+            "Header_Bg": "#033e94",
+            "Header_Fg": "#ffffff",
+            "Detail_Bg": "#5daef7",
+            "Detail_Fg": "#f3f3f3"
         }
     }
 ]
+
+export default types;
