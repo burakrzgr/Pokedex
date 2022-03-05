@@ -1,5 +1,5 @@
 import MainComp from './MainComp'
-import PokeRegion from './components/PokeRegion'
+import PokeRegion from './components/regions/PokeRegion'
 import PokeTypes from './components/types/PokeTypes';
 import { BrowserRouter, Route, Routes} from "react-router-dom";
 
