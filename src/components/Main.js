@@ -1,30 +1,51 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PokeCard from "./PokeCard"
-import {Row, Container} from 'react-bootstrap';
+import { Row, Container } from 'react-bootstrap';
 import Popup from "./Popup";
 import AddPoke from "./new/AddPoke";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import { misc } from "../data/misc";
 
 // test 2
 class Main extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            showNewPoke: props.showNewPoke,
-            modalData: {data: {}, show: false}
-        };
+
+        if (props.search) {
+            var poke = this.props.pokemons.filter(x => { return (x.Name === props.search) })[0];
+            if (poke) {
+                this.state = {
+                    showNewPoke: false,
+                    modalData: { data: poke, show: true }
+                };
+            }
+            else {
+                this.state = {
+                    showNewPoke: false,
+                    modalData: { data: misc[0], show: true }
+                };
+            }
+
+        }
+        else {
+
+            this.state = {
+                showNewPoke: props.showNewPoke,
+                modalData: { data: {}, show: false }
+            };
+        }
     };
 
     render() {
         const setShow = (vis) => {
-            this.setState(ps => ({...ps, modalData: {...ps.modalData, show: vis}}));
+            this.setState(ps => ({ ...ps, modalData: { ...ps.modalData, show: vis } }));
         };
         const setData = (data) => {
-            this.setState(ps => ({...ps, modalData: {data: {...data}, show: true}}));
+            this.setState(ps => ({ ...ps, modalData: { data: { ...data }, show: true } }));
         };
         const closeEdit = () => {
-            this.setState(ps => ({...ps, editNewPoke: false}));
+            this.setState(ps => ({ ...ps, editNewPoke: false }));
         };
         return (
             <Container fluid>
@@ -33,7 +54,7 @@ class Main extends Component {
                         return (
                             <PokeCard key={key} data={data} setModalShow={() => {
                                 setData(data)
-                            }}/> 
+                            }} />
                         );
                     })}
                 </Row>

@@ -1,7 +1,6 @@
 import {Navbar,Container,NavDropdown,Nav} from "react-bootstrap";
 
 function LoginPanel() {
-
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{zIndex:10}}>
             <Container fluid>
@@ -23,7 +22,7 @@ function LoginPanel() {
                         <Nav.Link href="/pazar">Canlı Poke Pazarı</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="login">Login</Nav.Link>
+                        <Nav.Link href="/login">Login</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

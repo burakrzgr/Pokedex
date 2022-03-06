@@ -1,5 +1,6 @@
-import { Button } from "bootstrap";
 import React from "react";
+import PokeList from "../PokeList";
+
 
 function RegionDetail({ data }) {
     return (
@@ -38,12 +39,8 @@ function RegionDetail({ data }) {
                                     <li className="list-group-item ">
                                         <h6 className="mb-0 text-start">Starter Pokemons</h6>
                                         <div className="d-flex justify-content-between align-items-center flex-wrap">
-                                            {data.Starters.map(x => {
-                                                return (
-                                                    <span key={x} className="btn btn-outline-dark mt-1">{x}</span>
-                                                );
-                                            }
-                                            )}
+                                            <PokeList list={data.Starters}> </PokeList>
+                                            
                                         </div>
                                     </li>
                                     <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">

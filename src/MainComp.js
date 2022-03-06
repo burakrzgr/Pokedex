@@ -2,8 +2,10 @@ import React,{useState} from 'react';
 import Search from './components/Seach';
 import LoadingPanel from './LoadingPanel';
 import Main from './components/Main';
+import { useParams } from 'react-router';
 
 function MainComp() {
+   let {search} = useParams();
     const [state, setState] = useState({ showNewPoke: false, loading: true });
     function setShowNewPoke(v) {
       setState({ ...state, showNewPoke: v });
@@ -19,6 +21,7 @@ function MainComp() {
         ) : (
           <Main
             addPokeEvent={(v) => setShowNewPoke(v)}
+            search={search}
             showNewPoke={state.showNewPoke}
           ></Main>
         )}
