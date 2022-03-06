@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import regions from "../../data/region";
+import RegionDetail from "./RegionDetail";
 
 const PokeRegion = () => {
     let { regionId } = useParams();
@@ -7,8 +8,7 @@ const PokeRegion = () => {
     return (
         region ?
                 <>
-                    <p>Region Name :{region.ProperName}</p>
-                    <img src={"/assets/img/maps/" + region.Image} style={{ width: "80%" }} ></img>
+                    <RegionDetail data={region}></RegionDetail>
                 </>
         :<div>404 Böyle bir bölge yok/yada henüz Sisteme kaydedilmemiştir.</div>        
     );
