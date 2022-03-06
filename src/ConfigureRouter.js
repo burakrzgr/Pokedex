@@ -14,7 +14,10 @@ function ConfigureRouter() {
                         <Route index element={<MainComp></MainComp>} />
                         <Route path=":search" element={<MainComp></MainComp>} />
                     </Route>
-                    <Route path="types" element={<PokeTypes></PokeTypes>} />
+                    <Route path="types" >
+                        <Route index element={<PokeTypes></PokeTypes>}></Route>
+                        <Route path=":type" element={<PokeTypes></PokeTypes>}></Route>
+                    </Route>
                     <Route path="region" >
                         <Route index element={<p>Bölge Seçiniz</p>} ></Route>
                         <Route path="maps" element={<h3>Henüz Tamamlanmadı.</h3>} />
