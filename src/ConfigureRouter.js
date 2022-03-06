@@ -12,8 +12,8 @@ function ConfigureRouter() {
                     <Route path="pokemons" element={<MainComp></MainComp>} />
                     <Route path="types" element={<PokeTypes></PokeTypes>} />
                     <Route path="region" >
-                        <Route index element={<p>Bölge</p>} ></Route>
-                        <Route path="new" element={<h3>Please select a topic.</h3>} />
+                        <Route index element={<p>Bölge Seçiniz</p>} ></Route>
+                        <Route path="maps" element={<h3>Henüz Tamamlanmadı.</h3>} />
                         <Route path=":regionId" element={<PokeRegion />} />
                     </Route>
                 </Route>
