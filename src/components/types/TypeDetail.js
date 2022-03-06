@@ -7,8 +7,6 @@ import PokeRow from "../PokeRow";
     return(
         <>
         <h3>{props.type.Name}</h3>
-        {console.log(props.pokemons)}
-        {console.log(props.type.Name)}
         <PokeRow list={typeList}></PokeRow>
         </>
 

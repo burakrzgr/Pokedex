@@ -27,17 +27,9 @@ function PokeTypes() {
             }
             {
                 typeOf ?
-                    <TypeDetail type={typeOf}></TypeDetail>
-                :
-                    <>Tip Seçiniz!</>
+                    <TypeDetail type={typeOf}></TypeDetail>: <>Tip Seçiniz!</>
             }
-            {
-                loaded ?
-                     <></>
-                   
-                :
-                    <LoadingPanel loaded={() => {setLoaded(true)}}></LoadingPanel> 
-                }
+            {loaded ? <></>:<LoadingPanel loaded={() => {setLoaded(true)}}></LoadingPanel>}
         </>
     );
 
