@@ -13,7 +13,7 @@ class Main extends Component {
         super(props);
 
         if (props.search) {
-            var poke = this.props.pokemons.filter(x => { return (x.Name === props.search) })[0];
+            var poke = this.props.pokemons.filter(x => { return (x.Name.toLowerCase() === props.search.toLowerCase()) })[0];
             if (poke) {
                 this.state = {
                     showNewPoke: false,
