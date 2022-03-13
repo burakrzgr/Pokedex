@@ -1,9 +1,10 @@
 import { Button, Table } from "react-bootstrap"
 import { Link } from "react-router-dom";
+import PokeType from "./PokeType";
 
 export default function PokeRow({ list }) {
     return (
-        <Table striped bordered hover size="sm" >
+        <Table bordered style={{boxShadow:"0 0 6px #444b",backgroundColor:"#ddd",color:"#222"}} >
             <thead>
                 <tr>
                     <th>
@@ -28,7 +29,7 @@ export default function PokeRow({ list }) {
                 return (
                     <tr key={x.id} style={{backgroundColor:x.BColor,color:x.FColor}}>
                         <td>{x.Name}</td>
-                        <td>{x.Type.toString()}</td>
+                        <td><PokeType list={x.Type} tooltipLevel={2}></PokeType></td>
                         <td>{x.Desc.substring(0, 60)+'...'}</td>
                         <td>{x.Ability.toString()}</td>
                         <td>
