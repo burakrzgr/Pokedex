@@ -4,14 +4,17 @@ const types = [
         "Name": "Bug",
         "Desc": "Böcek Türünde Saldırılar Yapar.",
         "SE": [
-            "Bug",
-            "Fire",
-            "Flying",
-            "Ice"
+            "Dark",
+            "Grass",
+            "Psychic"
         ],
         "NE": [
+            "Fairy",
+            "Fire",
             "Fighting",
-            "Ground",
+            "Flying",
+            "Ghost",
+            "Poison",
             "Steel"
         ],
         "Imm": [],
@@ -76,7 +79,7 @@ const types = [
             "Electric",
             "Grass"
         ],
-        "Imm": [],
+        "Imm": ["Ground"],
         "Style": {
             "Header_Bg": "#fff000",
             "Header_Fg": "#000000",
@@ -89,17 +92,13 @@ const types = [
         "Name": "Fairy",
         "Desc": "Buz Türünde Saldırılar Yapar.",
         "SE": [
-            "Water",
-            "Ground",
-            "Rock"
+            "Dark",
+            "Dragon",
+            "Fighting"
         ],
         "NE": [
             "Fire",
-            "Grass",
             "Poison",
-            "Flying",
-            "Bug",
-            "Dragon",
             "Steel"
         ],
         "Imm": [],
@@ -123,6 +122,7 @@ const types = [
         ],
         "NE": [
             "Poison",
+            "Fairy",
             "Flying",
             "Bug",
             "Psychic"
@@ -245,7 +245,7 @@ const types = [
             "Bug",
             "Grass"
         ],
-        "Imm": [],
+        "Imm": ["Flying"],
         "Style": {
             "Header_Bg": "#7c8128",
             "Header_Fg": "#fefccb",
@@ -258,13 +258,15 @@ const types = [
         "Name": "Ice",
         "Desc": "Buz Türünde Saldırılar Yapar.",
         "SE": [
-            "Fire",
-            "Ground",
-            "Rock"
-        ],
-        "NE": [
             "Dragon",
             "Grass",
+            "Flying",
+            "Ground"
+        ],
+        "NE": [
+            "Fire",
+            "Ice",
+            "Steel",
             "Water"
         ],
         "Imm": [],
@@ -281,7 +283,7 @@ const types = [
         "Desc": "Normal Türünde Saldırılar Yapar.",
         "SE": [],
         "NE": [
-            "Fighting"
+            "Rock","Steel"
         ],
         "Imm": [
             "Ghost"
@@ -298,20 +300,16 @@ const types = [
         "Name": "Poison",
         "Desc": "Zehir Türünde Saldırılar Yapar.",
         "SE": [
-            "Water",
-            "Ground",
-            "Rock"
+            "Fairy",
+            "Grass"
         ],
         "NE": [
-            "Fire",
-            "Grass",
+            "Ghost",
+            "Ground",
             "Poison",
-            "Flying",
-            "Bug",
-            "Dragon",
-            "Steel"
+            "Rock"
         ],
-        "Imm": [],
+        "Imm": ["Steel"],
         "Style": {
             "Header_Bg": "#56107a",
             "Header_Fg": "#20c055",
@@ -325,8 +323,7 @@ const types = [
         "Desc": "Zehir Türünde Saldırılar Yapar.",
         "SE": [
             "Fighting",
-            "Poison",
-            "Rock"
+            "Poison"
         ],
         "NE": [
             "Psychic",
@@ -370,17 +367,14 @@ const types = [
         "Name": "Steel",
         "Desc": "Buz Türünde Saldırılar Yapar.",
         "SE": [
-            "Water",
-            "Ground",
+            "Fairy",
+            "Ice",
             "Rock"
         ],
         "NE": [
+            "Electric",
             "Fire",
-            "Grass",
-            "Poison",
-            "Flying",
-            "Bug",
-            "Dragon",
+            "Water",
             "Steel"
         ],
         "Imm": [],

@@ -1,6 +1,7 @@
 import { Card, Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import PokeRow from "../PokeRow";
+import TypeChart from "./TypeChard";
 
 
 function TypeDetail(props) {
@@ -15,6 +16,7 @@ function TypeDetail(props) {
                     <Card.Body style={{backgroundColor:props.type.Style.Detail_Bg,color:props.type.Style.Detail_Fg}}>
                         <p>{props.type.Desc}</p>
                         <p>{typeList.length + " adet pokemon bu kategoridedir."}</p>
+                        <TypeChart data={props.type} ></TypeChart>
                         <PokeRow list={typeList}></PokeRow>
                     </Card.Body>
                 </Card>
