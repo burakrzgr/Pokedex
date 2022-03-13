@@ -8,7 +8,7 @@ function TypeCard({ data }) {
             <Card style={{ backgroundColor: data.Style.Detail_Bg, color: data.Style.Detail_Fg }} >
                 <Card.Body>
                     <Card.Title style={{ backgroundColor: data.Style.Header_Bg, color: data.Style.Header_Fg }} className="p-1 m-0 rounded" >{data.Name}</Card.Title>
-                    <Card.Text style={{ fontSize: "15px", overflowY: 'auto', height: '10rem' }}  >
+                    <Card.Text style={{ fontSize: "15px", overflowY: 'auto', height: '3rem' }}  >
                         {data.Desc}
                     </Card.Text>
                 </Card.Body>

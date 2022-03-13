@@ -7,7 +7,7 @@ function TypeDetail(props) {
     var typeList = props.pokemons.filter(x => { return x.Type.includes(props.type.Name); });
     return (
         <>
-            <Container >
+            <Container fluid>
                 <Card className="w-100">
                     <Card.Header className="text-dark">
                         <h3>{props.type.Name}</h3>
