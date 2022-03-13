@@ -14,7 +14,7 @@ function TypeDetail(props) {
                     </Card.Header>
                     <Card.Body style={{backgroundColor:props.type.Style.Detail_Bg,color:props.type.Style.Detail_Fg}}>
                         <p>{props.type.Desc}</p>
-                        <p>{typeList.length + " adet poemon bu kategoridedir."}</p>
+                        <p>{typeList.length + " adet pokemon bu kategoridedir."}</p>
                         <PokeRow list={typeList}></PokeRow>
                     </Card.Body>
                 </Card>
