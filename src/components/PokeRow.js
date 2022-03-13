@@ -9,7 +9,9 @@ export default function PokeRow({ list }) {
                     <th>
                         Name
                     </th>
-                    Type(s)
+                    <th>
+                        Type(s)
+                    </th>
                     <th >
                         Description
                     </th>
@@ -27,7 +29,7 @@ export default function PokeRow({ list }) {
                     <tr key={x.id} style={{backgroundColor:x.BColor,color:x.FColor}}>
                         <td>{x.Name}</td>
                         <td>{x.Type.toString()}</td>
-                        <td>{x.Desc.substring(0, 60)}...</td>
+                        <td>{x.Desc.substring(0, 60)+'...'}</td>
                         <td>{x.Ability.toString()}</td>
                         <td>
                             <Link to={"/pokemons/" + x.Name}>
