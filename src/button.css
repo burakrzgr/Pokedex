@@ -46,6 +46,7 @@
 .Grass{
   background-color: #08a702;
   color: #fff;
+  text-shadow: 1px 1px 2px #b73c16;
 }
 .Poison{
   background-color: #5e0083;
@@ -71,10 +72,12 @@
 .Fairy{
   background-color: #c78fb9;
   color: #fff;
+  text-shadow: 1px 1px 2px #08343e;
 }
 .Ice{
   background-color: #bde6f1;
   color: #fff;
+  text-shadow: 1px 1px 2px #08343e;
 }
 .Flying{
   background : linear-gradient(0deg, rgb(187, 187, 187) 20%, rgb(98, 165, 253) 80%);
