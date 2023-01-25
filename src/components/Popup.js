@@ -44,6 +44,7 @@ function Popup(props) {
       backdrop="static"
       className="pokepop"
       centered
+      contentClassName="my-popup-rounded"
     >
      
       {props.data ? (

@@ -33,6 +33,11 @@ code {
 
 }
 
+.my-popup-rounded{
+    border-radius: 1.6rem !important;
+    overflow: hidden;
+}
+
 .seperator{
   width:2px;
   height:2.5rem; 
