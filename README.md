@@ -17,8 +17,11 @@ You may also see any lint errors in the console.
 Serverlar çalışması için runserver bat çalıştırılmalı.
 Serverler aşağıdaki gibi klasörlere yerleştirilmeli.
 3 Klasörde aynı klasörün içinde olmalı. 
+
 --> FileServer 
+
 --> PokeServer
+
 --> Pokedex
 
 
