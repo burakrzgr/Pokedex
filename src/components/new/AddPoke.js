@@ -163,6 +163,7 @@ function AddPoke(props) {
                 className="pokeAdd"
                 style={{ filter: showDelete ? 'grayscale(80%) blur(4px)' : '' }}
                 centered
+                contentClassName="my-popup-rounded"
             >
                 <Container style={{ backgroundColor: "#FFF" }} fluid>
                     <Row>
